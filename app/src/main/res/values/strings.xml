@@ -2,4 +2,15 @@
     <string name="app_name">LogTracker</string>
     <string name="todo">TODO</string>
     <string name="pickdate">pickDate</string>
+
+    <string-array name="Aircraft_types">
+        <item>choose</item>
+        <item>UH-1H</item>
+        <item>AH-64A</item>
+        <item>AH-64D</item>
+        <item>CH-47D</item>
+        <item>NH-90</item>
+        <item>NH-300C</item>
+
+    </string-array>
 </resources>

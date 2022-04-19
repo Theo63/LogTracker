@@ -11,6 +11,18 @@
         <item>CH-47D</item>
         <item>NH-90</item>
         <item>NH-300C</item>
+    </string-array>
+
+    <string-array name="Flight_types">
+        <item>choose</item>
+        <item>General purpose</item>
+        <item>IFR flight training</item>
+        <item>VFR flight training</item>
+        <item>Rappel</item>
+        <item>Hoist</item>
+        <item>S.A.R</item>
+        <item>Cargo</item>
+        <item>Weapon Training</item>
 
     </string-array>
 </resources>

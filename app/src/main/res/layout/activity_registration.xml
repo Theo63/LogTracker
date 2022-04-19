@@ -7,11 +7,22 @@
     android:background="#557DBC"
     tools:context=".registration">
 
+    <Spinner
+        android:id="@+id/type_spinner2"
+        android:layout_width="128dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:spinnerMode="dropdown"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aircraft_id_input2" />
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="187dp"
         android:layout_height="38dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -167,7 +178,7 @@
 
     <Button
         android:id="@+id/datePicker"
-        android:layout_width="wrap_content"
+        android:layout_width="128dp"
         android:layout_height="29dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="32dp"
@@ -187,13 +198,46 @@
 
     <Spinner
         android:id="@+id/type_spinner"
-        android:layout_width="wrap_content"
+        android:layout_width="128dp"
         android:layout_height="19dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:spinnerMode="dropdown"
+        android:textAlignment="textEnd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/datePicker" />
+
+    <EditText
+        android:id="@+id/aircraft_id_input"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:text=""
+        android:textSize="14sp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type_spinner" />
+
+    <EditText
+        android:id="@+id/aircraft_id_input2"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:inputType="number|textPersonName"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aircraft_id_input" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

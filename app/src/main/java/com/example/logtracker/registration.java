@@ -8,20 +8,34 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
 public class registration extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-public static Button DateBtn, TimeBtn;
+public static Button DateBtn, TimeBtn, RegisterBtn;
+public static ArrayList<Integer> dateSelected,timeSelected = new ArrayList<>();
+public static String aircraftType,typeofFlight, lightCond, flightRules,dutyonBoard, aircraftID = "";
+public static Integer landingsInput = 0 ;
+EditText aircraftid, landings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         getWindow().setNavigationBarColor(Color.parseColor("#557DBC"));
+
+        aircraftid = (EditText) findViewById(R.id.aircraft_id_input);
+        landings =  (EditText) findViewById(R.id.landings_input);
         DateBtn = (Button) findViewById(R.id.datePicker);
         TimeBtn = (Button) findViewById(R.id.timePicker);
+        RegisterBtn = (Button) findViewById(R.id.registerButton);
+        Snackbar errorSnack = Snackbar.make(findViewById(R.id.registrationLayout),
+                "Please fill all the fields",1500);
 
         Spinner type_of_aircraftSpinner = (Spinner) findViewById(R.id.aircraft_type_spinner);
         Spinner type_of_flightSpinner = (Spinner) findViewById(R.id.type_of_flight_spinner);
@@ -68,10 +82,28 @@ public static Button DateBtn, TimeBtn;
         duty_on_boardSpinner.setAdapter(duty_on_boardadapter);
         duty_on_boardSpinner.setOnItemSelectedListener(this);
 
+        RegisterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    getInputValues();
+                    System.out.println(dateSelected+"\n"+aircraftType+"\n"+aircraftID+"\n"+landingsInput+"\n"+
+                            timeSelected+"\n"+lightCond+"\n"+flightRules+"\n"+dutyonBoard);
+                    }
+                catch(Exception e) {
+                    errorSnack.show();
+                    }
+
+                }
+
+            }
+        );
+
+
     }
 
 
-
+///////////////// Date and time fragment section Look @ their classes too //////////////////////////
     public void showPickerDialog(View v) {
         if (v.getId()== R.id.datePicker){
             DatePickerFragment newDateFragment = new DatePickerFragment();
@@ -84,21 +116,25 @@ public static Button DateBtn, TimeBtn;
 
     }
 
-
     //when a date is picket we change the value of the button
     public static void setDateButton(ArrayList<Integer> dates){
+        //set the button to date selected
         DateBtn.setText(String.valueOf(dates.get(0))+" / "+dates.get(1)+" / "+dates.get(2));
+        dateSelected=dates;//store date
     }
+
     // when a time is picked we change the time value of the button
     public static void setTimeButton(ArrayList<Integer> time){
         if (time.get(1)>=0 && time.get(1)<10){
             TimeBtn.setText(String.valueOf(time.get(0)+ " : 0"+ time.get(1)));
         }
         else{TimeBtn.setText(String.valueOf(time.get(0)+ " : "+ time.get(1)));}
+        timeSelected=time;//store time
     }
 
 
 
+/////////////////////////////////// Spinners section /////////////////////////////////////////////
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
         // An item was selected. You can retrieve the selected item using
@@ -108,29 +144,45 @@ public static Button DateBtn, TimeBtn;
         if (parent.getId() == R.id.aircraft_type_spinner && !spinnerInput.equals("choose")){
             // first spinner selected
             Toast.makeText(parent.getContext(),"first spinner" + spinnerInput, Toast.LENGTH_SHORT).show();
+            aircraftType=spinnerInput; // set the type of aircraft
         }
         else if (parent.getId() == R.id.type_of_flight_spinner && !spinnerInput.equals("choose")){
             // second spinner selected
             Toast.makeText(parent.getContext(),"second spinner"+ spinnerInput, Toast.LENGTH_SHORT).show();
+            typeofFlight=spinnerInput;//set type of flight string
         }
         else if (parent.getId() == R.id.light_conditions_spinner && !spinnerInput.equals("choose")){
             // second spinner selected
             Toast.makeText(parent.getContext(),"third spinner"+ spinnerInput, Toast.LENGTH_SHORT).show();
+            lightCond=spinnerInput; //set the light conditions
         }
         else if (parent.getId() == R.id.flight_rules_spinner && !spinnerInput.equals("choose")){
             // second spinner selected
             Toast.makeText(parent.getContext(),"fourth spinner"+ spinnerInput, Toast.LENGTH_SHORT).show();
+            flightRules=spinnerInput; //set the flight rules
         }
         else if (parent.getId() == R.id.duty_on_board_spinner && !spinnerInput.equals("choose")){
             // second spinner selected
             Toast.makeText(parent.getContext(),"fifth spinner"+ spinnerInput, Toast.LENGTH_SHORT).show();
+            dutyonBoard=spinnerInput; // set the duty on board
         }
 
     }
-
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
     }
+
+
+    //pick input values in register button
+    public void getInputValues(){
+        landingsInput = Integer.parseInt(landings.getText().toString());
+        aircraftID = aircraftid.getText().toString();
+
+    }
+
+
+
+
 
 
 

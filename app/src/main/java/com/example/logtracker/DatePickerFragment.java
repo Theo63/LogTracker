@@ -33,8 +33,7 @@ public  class DatePickerFragment extends DialogFragment implements DatePickerDia
         date.add(1,(month + 1));
         date.add(2,year);
         System.out.println("the date is "+"day: "+ day+" month: "+ (month + 1) + " of year: " + year);
-        registration.setButton(date);
-
+        registration.setDateButton(date);
 
     }
 

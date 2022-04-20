@@ -23,6 +23,28 @@
         <item>S.A.R</item>
         <item>Cargo</item>
         <item>Weapon Training</item>
-
     </string-array>
+
+    <string-array name="Light_Conditions">
+        <item>choose</item>
+        <item>Day</item>
+        <item>Night</item>
+    </string-array>
+
+    <string-array name="Flight_rules">
+        <item>choose</item>
+        <item>VFR</item>
+        <item>IFR</item>
+        <item>SVFR</item>
+    </string-array>
+
+    <string-array name="Duty_on_Board">
+        <item>choose</item>
+        <item>Instructor Pilot</item>
+        <item>1st Pilot</item>
+        <item>Copilot</item>
+        <item>1st Engineer</item>
+        <item>2nd Engineer</item>
+    </string-array>
+
 </resources>

@@ -18,9 +18,10 @@ import java.util.ArrayList;
 
 public class registration extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 public static Button DateBtn, TimeBtn, RegisterBtn;
-public static ArrayList<Integer> dateSelected,timeSelected = new ArrayList<>();
-public static String aircraftType,typeofFlight, lightCond, flightRules,dutyonBoard, aircraftID = "";
-public static Integer landingsInput = 0 ;
+LogtrackerDBHandler flightsDB;
+//public static ArrayList<Integer> dateSelected,timeSelected = new ArrayList<>();
+//public static String aircraftType,typeofFlight, lightCond, flightRules,dutyonBoard, aircraftID = "";
+//public static Integer landingsInput = 0 ;
 EditText aircraftid, landings;
 
     @Override
@@ -28,7 +29,7 @@ EditText aircraftid, landings;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         getWindow().setNavigationBarColor(Color.parseColor("#557DBC"));
-
+        flightsDB = new LogtrackerDBHandler(this); //creates db obj
         aircraftid = (EditText) findViewById(R.id.aircraft_id_input);
         landings =  (EditText) findViewById(R.id.landings_input);
         DateBtn = (Button) findViewById(R.id.datePicker);
@@ -87,8 +88,9 @@ EditText aircraftid, landings;
             public void onClick(View view) {
                 try {
                     getInputValues();
-                    System.out.println(dateSelected+"\n"+aircraftType+"\n"+aircraftID+"\n"+landingsInput+"\n"+
-                            timeSelected+"\n"+lightCond+"\n"+flightRules+"\n"+dutyonBoard);
+                    System.out.println(flightLog.getDateSelected()+"\n"+flightLog.getAircraftType()+"\n"+flightLog.getAircraftID()+"\n"+flightLog.getLandingsInput()+"\n"+
+                            flightLog.getTimeSelected()+"\n"+flightLog.getLightCond()+"\n"+flightLog.getFlightRules()+"\n"+flightLog.getDutyonBoard());
+                    boolean isInserted = flightsDB.addFlight();
                     }
                 catch(Exception e) {
                     errorSnack.show();
@@ -120,7 +122,7 @@ EditText aircraftid, landings;
     public static void setDateButton(ArrayList<Integer> dates){
         //set the button to date selected
         DateBtn.setText(String.valueOf(dates.get(0))+" / "+dates.get(1)+" / "+dates.get(2));
-        dateSelected=dates;//store date
+        flightLog.setDateSelected(dates);//store date
     }
 
     // when a time is picked we change the time value of the button
@@ -129,7 +131,7 @@ EditText aircraftid, landings;
             TimeBtn.setText(String.valueOf(time.get(0)+ " : 0"+ time.get(1)));
         }
         else{TimeBtn.setText(String.valueOf(time.get(0)+ " : "+ time.get(1)));}
-        timeSelected=time;//store time
+        flightLog.setTimeSelected(time);//store time
     }
 
 
@@ -144,27 +146,27 @@ EditText aircraftid, landings;
         if (parent.getId() == R.id.aircraft_type_spinner && !spinnerInput.equals("choose")){
             // first spinner selected
             Toast.makeText(parent.getContext(),"first spinner" + spinnerInput, Toast.LENGTH_SHORT).show();
-            aircraftType=spinnerInput; // set the type of aircraft
+            flightLog.setAircraftType(spinnerInput); // set the type of aircraft
         }
         else if (parent.getId() == R.id.type_of_flight_spinner && !spinnerInput.equals("choose")){
             // second spinner selected
             Toast.makeText(parent.getContext(),"second spinner"+ spinnerInput, Toast.LENGTH_SHORT).show();
-            typeofFlight=spinnerInput;//set type of flight string
+            flightLog.setTypeofFlight(spinnerInput);//set type of flight string
         }
         else if (parent.getId() == R.id.light_conditions_spinner && !spinnerInput.equals("choose")){
             // second spinner selected
             Toast.makeText(parent.getContext(),"third spinner"+ spinnerInput, Toast.LENGTH_SHORT).show();
-            lightCond=spinnerInput; //set the light conditions
+            flightLog.setLightCond(spinnerInput); //set the light conditions
         }
         else if (parent.getId() == R.id.flight_rules_spinner && !spinnerInput.equals("choose")){
             // second spinner selected
             Toast.makeText(parent.getContext(),"fourth spinner"+ spinnerInput, Toast.LENGTH_SHORT).show();
-            flightRules=spinnerInput; //set the flight rules
+            flightLog.setFlightRules(spinnerInput); //set the flight rules
         }
         else if (parent.getId() == R.id.duty_on_board_spinner && !spinnerInput.equals("choose")){
             // second spinner selected
             Toast.makeText(parent.getContext(),"fifth spinner"+ spinnerInput, Toast.LENGTH_SHORT).show();
-            dutyonBoard=spinnerInput; // set the duty on board
+            flightLog.setDutyonBoard(spinnerInput); // set the duty on board
         }
 
     }
@@ -175,8 +177,8 @@ EditText aircraftid, landings;
 
     //pick input values in register button
     public void getInputValues(){
-        landingsInput = Integer.parseInt(landings.getText().toString());
-        aircraftID = aircraftid.getText().toString();
+        flightLog.setLandingsInput(Integer.parseInt(landings.getText().toString()));
+        flightLog.setAircraftID(aircraftid.getText().toString());
 
     }
 

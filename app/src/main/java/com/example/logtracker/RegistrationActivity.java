@@ -16,7 +16,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
-public class registration extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class RegistrationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 public static Button DateBtn, TimeBtn, RegisterBtn;
 LogtrackerDBHandler flightsDB;
 //public static ArrayList<Integer> dateSelected,timeSelected = new ArrayList<>();
@@ -93,9 +93,9 @@ EditText aircraftid, landings;
                             flightLog.getTimeSelected()+"\n"+flightLog.getLightCond()+"\n"+flightLog.getFlightRules()+"\n"+flightLog.getDutyonBoard());
                     boolean isInserted = flightsDB.addFlight();
                     if (isInserted)
-                        Toast.makeText(registration.this,"Flight Registered successfully",Toast.LENGTH_LONG).show();
+                        Toast.makeText(RegistrationActivity.this,"Flight Registered successfully",Toast.LENGTH_LONG).show();
                     else
-                        Toast.makeText(registration.this,"Error in Flight registration",Toast.LENGTH_LONG).show();
+                        Toast.makeText(RegistrationActivity.this,"Error in Flight RegistrationActivity",Toast.LENGTH_LONG).show();
 
 
                 }

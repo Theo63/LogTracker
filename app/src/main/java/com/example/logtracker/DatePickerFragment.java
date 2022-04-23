@@ -3,7 +3,6 @@ package com.example.logtracker;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.DatePicker;
 
 import androidx.fragment.app.DialogFragment;
@@ -33,7 +32,7 @@ public  class DatePickerFragment extends DialogFragment implements DatePickerDia
         date.add(1,(month + 1));
         date.add(2,year);
         System.out.println("the date is "+"day: "+ day+" month: "+ (month + 1) + " of year: " + year);
-        registration.setDateButton(date);
+        com.example.logtracker.RegistrationActivity.setDateButton(date);
 
     }
 

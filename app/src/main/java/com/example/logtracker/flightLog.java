@@ -48,7 +48,7 @@ public class flightLog {
         for (Integer item: dateSelected){
             date=item+date;
             if (counter<2){
-                date=":"+date;
+                date="-"+date;
                 counter++;
             }
         }

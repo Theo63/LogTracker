@@ -76,6 +76,12 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
 //        db.close();
     }
 
+    public void resetDB(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FLIGHTS);
+        onCreate(db);
+    }
+
 
 //    public Product findProduct(String productname) {
 //        String query = "SELECT * FROM " + TABLE_PRODUCTS + " WHERE " +
@@ -89,5 +95,5 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
 //        }
 //        db.close(); return product;
 //    }
-    //Delete registration method
+    //Delete RegistrationActivity method
 }

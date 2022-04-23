@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LogTracker">
         <activity
-            android:name=".registration"
+            android:name=".PreferencesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrationActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

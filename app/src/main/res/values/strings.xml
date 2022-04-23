@@ -2,6 +2,12 @@
     <string name="app_name">LogTracker</string>
     <string name="todo">TODO</string>
     <string name="pickdate">pickDate</string>
+
+    <string name="Checkbox">com.example.logtracker.CheckPref</string>
+    <string name="Name">com.example.logtracker.NamePref</string>
+    <string name="Email">com.example.logtracker.EmailPref</string>
+    <string name="Hours">com.example.logtracker.HoursPref</string>
+
     //Preferences acrivity
     <string name="Name_hint">Name</string>
     <string name="mail_hint">e-mail</string>

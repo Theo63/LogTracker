@@ -40,7 +40,7 @@
             app:layout_constraintTop_toBottomOf="@+id/LogoImage" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/NameInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="64dp"
@@ -53,7 +53,7 @@
             app:layout_constraintTop_toBottomOf="@+id/Logo" />
 
         <EditText
-            android:id="@+id/Email"
+            android:id="@+id/mailInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -63,10 +63,10 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+            app:layout_constraintTop_toBottomOf="@+id/NameInput" />
 
         <EditText
-            android:id="@+id/editTextNumber"
+            android:id="@+id/StartingHoursInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -76,17 +76,17 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Email" />
+            app:layout_constraintTop_toBottomOf="@+id/mailInput" />
 
         <Button
             android:id="@+id/Save_prefs_Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:text="Save Preferences"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextNumber"
+            app:layout_constraintTop_toBottomOf="@+id/rememberMeCheckbox"
             app:strokeColor="#EDDD8A" />
 
         <Button
@@ -99,6 +99,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Save_prefs_Button" />
+
+        <CheckBox
+            android:id="@+id/rememberMeCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Remember me"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/StartingHoursInput" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

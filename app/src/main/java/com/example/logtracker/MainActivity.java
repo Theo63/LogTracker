@@ -24,4 +24,9 @@ public class MainActivity extends AppCompatActivity {
         //ask android to start registration activity as a subactivity
         startActivity(intentReg);
     }
+
+    public void preferencesForm(View view){
+        Intent intentPref = new Intent(this, registration.class);
+        startActivity(intentPref);
+    }
 }

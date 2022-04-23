@@ -83,6 +83,7 @@ EditText aircraftid, landings;
         duty_on_boardSpinner.setAdapter(duty_on_boardadapter);
         duty_on_boardSpinner.setOnItemSelectedListener(this);
 
+        //Register button functionality
         RegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,7 +92,13 @@ EditText aircraftid, landings;
                     System.out.println(flightLog.getDateSelected()+"\n"+flightLog.getAircraftType()+"\n"+flightLog.getAircraftID()+"\n"+flightLog.getLandingsInput()+"\n"+
                             flightLog.getTimeSelected()+"\n"+flightLog.getLightCond()+"\n"+flightLog.getFlightRules()+"\n"+flightLog.getDutyonBoard());
                     boolean isInserted = flightsDB.addFlight();
-                    }
+                    if (isInserted)
+                        Toast.makeText(registration.this,"Flight Registered successfully",Toast.LENGTH_LONG).show();
+                    else
+                        Toast.makeText(registration.this,"Error in Flight registration",Toast.LENGTH_LONG).show();
+
+
+                }
                 catch(Exception e) {
                     errorSnack.show();
                     }
@@ -145,27 +152,27 @@ EditText aircraftid, landings;
         //just a toast to make sure item is passed
         if (parent.getId() == R.id.aircraft_type_spinner && !spinnerInput.equals("choose")){
             // first spinner selected
-            Toast.makeText(parent.getContext(),"first spinner" + spinnerInput, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(parent.getContext(),"first spinner" + spinnerInput, Toast.LENGTH_SHORT).show();
             flightLog.setAircraftType(spinnerInput); // set the type of aircraft
         }
         else if (parent.getId() == R.id.type_of_flight_spinner && !spinnerInput.equals("choose")){
             // second spinner selected
-            Toast.makeText(parent.getContext(),"second spinner"+ spinnerInput, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(parent.getContext(),"second spinner"+ spinnerInput, Toast.LENGTH_SHORT).show();
             flightLog.setTypeofFlight(spinnerInput);//set type of flight string
         }
         else if (parent.getId() == R.id.light_conditions_spinner && !spinnerInput.equals("choose")){
             // second spinner selected
-            Toast.makeText(parent.getContext(),"third spinner"+ spinnerInput, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(parent.getContext(),"third spinner"+ spinnerInput, Toast.LENGTH_SHORT).show();
             flightLog.setLightCond(spinnerInput); //set the light conditions
         }
         else if (parent.getId() == R.id.flight_rules_spinner && !spinnerInput.equals("choose")){
             // second spinner selected
-            Toast.makeText(parent.getContext(),"fourth spinner"+ spinnerInput, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(parent.getContext(),"fourth spinner"+ spinnerInput, Toast.LENGTH_SHORT).show();
             flightLog.setFlightRules(spinnerInput); //set the flight rules
         }
         else if (parent.getId() == R.id.duty_on_board_spinner && !spinnerInput.equals("choose")){
             // second spinner selected
-            Toast.makeText(parent.getContext(),"fifth spinner"+ spinnerInput, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(parent.getContext(),"fifth spinner"+ spinnerInput, Toast.LENGTH_SHORT).show();
             flightLog.setDutyonBoard(spinnerInput); // set the duty on board
         }
 

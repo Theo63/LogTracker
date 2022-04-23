@@ -59,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:backgroundTint="#00FFFFFF"
+        android:onClick="preferencesForm"
         android:shadowColor="#00FFFFFF"
         android:text="Save your Preferences"
         android:textAlignment="center"
@@ -72,8 +73,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="251dp"
-        android:layout_height="123dp"
+        android:layout_width="250dp"
+        android:layout_height="125dp"
         android:layout_marginTop="16dp"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"

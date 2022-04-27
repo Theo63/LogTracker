@@ -1,8 +1,10 @@
 package com.example.logtracker;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -92,7 +94,26 @@ public class PreferencesActivity extends AppCompatActivity {
         ResetDB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                flightsDBprefs.resetDB();
+                // setting a warning dialog before resetting the database
+                AlertDialog alertDialog = new AlertDialog.Builder(PreferencesActivity.this).create();
+                alertDialog.setTitle("Database Reset Warning !");
+                alertDialog.setMessage("ALL data will be reset. Are you sure ?");
+                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                flightsDBprefs.resetDB(); // database reset after pressing ok
+                                Toast.makeText(PreferencesActivity.this,"Database is now empty",Toast.LENGTH_LONG).show();
+                            }
+                        });
+                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                alertDialog.dismiss();
+                            }
+                });
+                alertDialog.show();
             }
         });
     }

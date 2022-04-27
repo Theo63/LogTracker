@@ -3,10 +3,21 @@ package com.example.logtracker;
 import java.util.ArrayList;
 
 public class flightLog {
-    private static   ArrayList<Integer> dateSelected,timeSelected = new ArrayList<>();
-    private static String aircraftType,typeofFlight, lightCond, flightRules, dutyonBoard, aircraftID = "";
-    private static Integer landingsInput = 0 ;
+    private static   ArrayList<Integer> dateSelected,timeSelected ;
+    private static String aircraftType,typeofFlight, lightCond, flightRules, dutyonBoard, aircraftID,arrival,destination ;
+    private static Integer landingsInput;
     public flightLog(){
+        dateSelected= new ArrayList<>();
+        timeSelected =new ArrayList<>();
+        aircraftType= "";
+        typeofFlight= "";
+        lightCond= "";
+        flightRules= "";
+        dutyonBoard= "";
+        aircraftID = "";
+        arrival="";
+        destination="";
+        landingsInput=0;
     }
 
     //settters
@@ -24,6 +35,12 @@ public class flightLog {
     }
     public static void setAircraftType(String aircraftType) {
         flightLog.aircraftType = aircraftType;
+    }
+    public static void setArrival(String Arrival) {
+        flightLog.arrival = Arrival;
+    }
+    public static void setDestination(String Destination) {
+        flightLog.destination = Destination;
     }
     public static void setLandingsInput(Integer landingsInput) {
         flightLog.landingsInput = landingsInput;
@@ -85,7 +102,27 @@ public class flightLog {
     public static String getLightCond() {
         return lightCond;
     }
-    public static String getTypeofFlight() {
-        return typeofFlight;
+    public static String getTypeofFlight(){return typeofFlight;}
+    public static String getArrival() {
+        return arrival;
     }
+    public static String getDestination() {
+        return destination;
+    }
+
+
+    //check is all mandatory flight fields are inserted
+    public static boolean fieldCompletion(){
+        if (aircraftType.equals("") ||  typeofFlight.equals("") || lightCond.equals("")
+                || flightRules.equals("") || dutyonBoard.equals("") || aircraftID.equals("")
+                || arrival.equals("") || destination.equals("")
+                || dateSelected.isEmpty() || timeSelected.isEmpty()){
+            return false;
+        }
+        else{
+            System.out.println(aircraftType+typeofFlight+lightCond+flightRules+dutyonBoard+aircraftID+aircraftID+dateSelected+timeSelected);
+            return true;
+        }
+    }
+
 }

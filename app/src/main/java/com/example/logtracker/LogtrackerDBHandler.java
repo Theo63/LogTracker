@@ -16,6 +16,8 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_DATE = "Date";
     public static final String COLUMN_AIRCRAFTTYPE = "aircraftType";
     public static final String COLUMN_AIRCRAFTID = "aircraftID";
+    public static final String COLUMN_ARRIVAL = "arrival";
+    public static final String COLUMN_DESTINATION = "destination";
 //    public static final String COLUMN_ARRIVAL = "arrival"; //arrival
 //    public static final String COLUMN_DESTINATION = "destination"; //destination
     public static final String COLUMN_LANDINGS = "landings";
@@ -39,6 +41,8 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
                 COLUMN_DATE + " TEXT," +
                 COLUMN_AIRCRAFTTYPE + " TEXT," +
                 COLUMN_AIRCRAFTID + " TEXT," +
+                COLUMN_ARRIVAL + " TEXT," +
+                COLUMN_DESTINATION + " TEXT," +
                 COLUMN_LANDINGS + " INTEGER," +
                 COLUMN_TYPEOFFLIGHT + " TEXT," +
                 COLUMN_FLIGHTDURATION + " TEXT," +
@@ -61,6 +65,8 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
         contentValues.put(COLUMN_DATE,flightLog.getDateSelected());
         contentValues.put(COLUMN_AIRCRAFTTYPE,flightLog.getAircraftType());
         contentValues.put(COLUMN_AIRCRAFTID,flightLog.getAircraftID());
+        contentValues.put(COLUMN_ARRIVAL,flightLog.getArrival());
+        contentValues.put(COLUMN_DESTINATION,flightLog.getDestination());
         contentValues.put(COLUMN_LANDINGS,flightLog.getLandingsInput());
         contentValues.put(COLUMN_TYPEOFFLIGHT,flightLog.getTypeofFlight());
         contentValues.put(COLUMN_FLIGHTDURATION,flightLog.getTimeSelected());

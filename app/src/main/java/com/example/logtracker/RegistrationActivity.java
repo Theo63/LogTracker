@@ -22,7 +22,8 @@ LogtrackerDBHandler flightsDB;
 //public static ArrayList<Integer> dateSelected,timeSelected = new ArrayList<>();
 //public static String aircraftType,typeofFlight, lightCond, flightRules,dutyonBoard, aircraftID = "";
 //public static Integer landingsInput = 0 ;
-EditText aircraftid, landings;
+EditText aircraftid, landings, arrival, destination;
+Spinner type_of_aircraftSpinner,type_of_flightSpinner,light_condSpinner,flight_rulesSpinner,duty_on_boardSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,17 +33,19 @@ EditText aircraftid, landings;
         flightsDB = new LogtrackerDBHandler(this); //creates db obj
         aircraftid = (EditText) findViewById(R.id.aircraft_id_input);
         landings =  (EditText) findViewById(R.id.landings_input);
+        arrival = (EditText) findViewById(R.id.arrivalInput);
+        destination = (EditText) findViewById(R.id.destinationInput);
         DateBtn = (Button) findViewById(R.id.datePicker);
         TimeBtn = (Button) findViewById(R.id.timePicker);
         RegisterBtn = (Button) findViewById(R.id.registerButton);
         Snackbar errorSnack = Snackbar.make(findViewById(R.id.registrationLayout),
                 "Please fill all the fields",1500);
 
-        Spinner type_of_aircraftSpinner = (Spinner) findViewById(R.id.aircraft_type_spinner);
-        Spinner type_of_flightSpinner = (Spinner) findViewById(R.id.type_of_flight_spinner);
-        Spinner light_condSpinner = (Spinner) findViewById(R.id.light_conditions_spinner);
-        Spinner flight_rulesSpinner = (Spinner) findViewById(R.id.flight_rules_spinner);
-        Spinner duty_on_boardSpinner = (Spinner) findViewById(R.id.duty_on_board_spinner);
+        type_of_aircraftSpinner = (Spinner) findViewById(R.id.aircraft_type_spinner);
+        type_of_flightSpinner = (Spinner) findViewById(R.id.type_of_flight_spinner);
+        light_condSpinner = (Spinner) findViewById(R.id.light_conditions_spinner);
+        flight_rulesSpinner = (Spinner) findViewById(R.id.flight_rules_spinner);
+        duty_on_boardSpinner = (Spinner) findViewById(R.id.duty_on_board_spinner);
 
         // Create an ArrayAdapter using the string array and a default spinner layout for ALL Spinners
         ArrayAdapter<CharSequence> type_of_aircraftadapter = ArrayAdapter.createFromResource(this,
@@ -91,12 +94,19 @@ EditText aircraftid, landings;
                     getInputValues();
                     System.out.println(flightLog.getDateSelected()+"\n"+flightLog.getAircraftType()+"\n"+flightLog.getAircraftID()+"\n"+flightLog.getLandingsInput()+"\n"+
                             flightLog.getTimeSelected()+"\n"+flightLog.getLightCond()+"\n"+flightLog.getFlightRules()+"\n"+flightLog.getDutyonBoard());
-                    boolean isInserted = flightsDB.addFlight();
-                    if (isInserted)
-                        Toast.makeText(RegistrationActivity.this,"Flight Registered successfully",Toast.LENGTH_LONG).show();
-                    else
-                        Toast.makeText(RegistrationActivity.this,"Error in Flight RegistrationActivity",Toast.LENGTH_LONG).show();
+                    boolean dataCompletion = flightLog.fieldCompletion();
+                    if (dataCompletion){
+                        boolean isInserted = flightsDB.addFlight();
+                        if (isInserted) {
+                            Toast.makeText(RegistrationActivity.this, "Flight Registered successfully", Toast.LENGTH_LONG).show();
+                        }
 
+                        else
+                            Toast.makeText(RegistrationActivity.this,"Error in Flight RegistrationActivity",Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        Toast.makeText(RegistrationActivity.this,"Please fill all the fields",Toast.LENGTH_LONG).show();
+                    }
 
                 }
                 catch(Exception e) {
@@ -186,6 +196,25 @@ EditText aircraftid, landings;
     public void getInputValues(){
         flightLog.setLandingsInput(Integer.parseInt(landings.getText().toString()));
         flightLog.setAircraftID(aircraftid.getText().toString());
+        flightLog.setArrival(arrival.getText().toString());
+        flightLog.setDestination(destination.getText().toString());
+    }
+
+    //reset object and layout after successful data entry
+    private void resetActivity(){
+        new flightLog(); //reset all object values
+        DateBtn.setText("   /    /");
+        TimeBtn.setText("   :");
+        type_of_aircraftSpinner.setSelection(0);
+        type_of_flightSpinner.setSelection(0);
+        light_condSpinner.setSelection(0);
+        flight_rulesSpinner.setSelection(0);
+        duty_on_boardSpinner.setSelection(0);
+        aircraftid.setText("");
+        landings.setText("");
+        arrival.setText("");
+        destination.setText("");
+
 
     }
 

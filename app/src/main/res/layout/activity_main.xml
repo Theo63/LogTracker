@@ -34,7 +34,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:strokeColor="#EDDD8A"
-        app:strokeWidth="2dp" />
+        app:strokeWidth="2dp"
+        tools:ignore="UsingOnClickInXml" />
 
     <Button
         android:id="@+id/search_flights"
@@ -42,6 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:backgroundTint="#00FFFFFF"
+        android:onClick="searchForm"
         android:shadowColor="#00FFFFFF"
         android:text="Search Flights"
         android:textAlignment="center"
@@ -51,7 +53,7 @@
         app:layout_constraintTop_toBottomOf="@+id/register_a_flight"
         app:strokeColor="#EDDD8A"
         app:strokeWidth="2dp"
-        tools:ignore="TextContrastCheck" />
+        tools:ignore="TextContrastCheck,UsingOnClickInXml" />
 
     <Button
         android:id="@+id/save_preferences"
@@ -69,7 +71,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_flights"
         app:strokeColor="#EDDD8A"
-        app:strokeWidth="2dp" />
+        app:strokeWidth="2dp"
+        tools:ignore="UsingOnClickInXml" />
 
     <ImageView
         android:id="@+id/imageView"

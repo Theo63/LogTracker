@@ -29,4 +29,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intentPrefs = new Intent(MainActivity.this, PreferencesActivity.class );
         startActivity(intentPrefs);
     }
+
+    public void searchForm(View view){
+        Intent intentSearch = new Intent(MainActivity.this, SearchActivity.class);
+        startActivity(intentSearch);
+    }
 }

@@ -99,6 +99,7 @@ Spinner type_of_aircraftSpinner,type_of_flightSpinner,light_condSpinner,flight_r
                         boolean isInserted = flightsDB.addFlight();
                         if (isInserted) {
                             Toast.makeText(RegistrationActivity.this, "Flight Registered successfully", Toast.LENGTH_LONG).show();
+                            resetActivity();
                         }
 
                         else

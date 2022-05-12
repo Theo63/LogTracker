@@ -120,6 +120,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
         android:text="   /    /"
+        android:onClick="showPickerDialog"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateSearch" />
 

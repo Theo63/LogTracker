@@ -15,12 +15,66 @@
 
     <string-array name="Aircraft_types">
         <item>choose</item>
-        <item>UH-1H</item>
-        <item>AH-64A</item>
-        <item>AH-64D</item>
-        <item>CH-47D</item>
-        <item>NH-90</item>
-        <item>NH-300C</item>
+        <item>A119</item>
+        <item>A109</item>
+        <item>AW139</item>
+        <item>AW109</item>
+        <item>AW169</item>
+        <item>AW189</item>
+        <item>AS 350 / EC130</item>
+        <item>SA 330</item>
+        <item>AS 332 / EC 225</item>
+        <item>AS355</item>
+        <item>Bell 47</item>
+        <item>Bell 206</item>
+        <item>Bell 204/205/UH-1D</item>
+        <item>Bell 212/412</item>
+        <item>Bell 214</item>
+        <item>Bell 505</item>
+        <item>Bell 222/230/430</item>
+        <item>Bell 427</item>
+        <item>Bell 429</item>
+        <item>BO 105</item>
+        <item>Brantley B2</item>
+        <item>Bristol 171 B</item>
+        <item>BK117</item>
+        <item>Cabri G2</item>
+        <item>EC135/635</item>
+        <item>EH101</item>
+        <item>ENF 28</item>
+        <item>ENF 480</item>
+        <item>EC120B</item>
+        <item>EC175</item>
+        <item>HU 269</item>
+        <item>HU 369/ MD500N / 600N</item>
+        <item>UH 12</item>
+        <item>H-160</item>
+        <item>K 1200</item>
+        <item>KA 26D</item>
+        <item>KA 32</item>
+        <item>KANIA</item>
+        <item>Mi 2</item>
+        <item>Mi 8</item>
+        <item>MD500N-600N</item>
+        <item>MD900-902</item>
+        <item>R 22 - 44 - 66</item>
+        <item>SK-61</item>
+        <item>SA341/342</item>
+        <item>SA318/SE313</item>
+        <item>SA316/319/315</item>
+        <item>SA360</item>
+        <item>SO 1221</item>
+        <item>S365 / EC155</item>
+        <item>SA365 C</item>
+        <item>S 64 F</item>
+        <item>SC 330</item>
+        <item>SW-4</item>
+        <item>W-3 SOKOL</item>
+        <item>S 55 - 58</item>
+        <item>SK 76</item>
+        <item>SK 61-92</item>
+        <item>SV 4</item>
+        <item>WHS 55</item>
     </string-array>
 
     <string-array name="Flight_types">
@@ -39,6 +93,7 @@
         <item>choose</item>
         <item>Day</item>
         <item>Night</item>
+        <item>Transition</item>
     </string-array>
 
     <string-array name="Flight_rules">

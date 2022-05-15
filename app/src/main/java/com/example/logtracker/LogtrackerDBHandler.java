@@ -2,11 +2,24 @@ package com.example.logtracker;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Environment;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.w3c.dom.ls.LSOutput;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class LogtrackerDBHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
@@ -26,6 +39,9 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_LIGHTCONDITIONS = "lightConditions";
     public static final String COLUMN_FLIGHTRULES = "flightRules";
     public static final String COLUMN_DUTYONBOARD = "dutyOnBoard";
+    public File filePath = new File(Environment.getExternalStorageDirectory().toString()+"/"+"flights.xls");
+
+
 
 
     public LogtrackerDBHandler(@Nullable Context context) {
@@ -35,7 +51,7 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_PRODUCTS_TABLE = "CREATE TABLE " +
+        String CREATE_FLIGHTS_TABLE = "CREATE TABLE " +
                 TABLE_FLIGHTS + "(" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 COLUMN_DATE + " TEXT," +
@@ -50,7 +66,7 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
                 COLUMN_FLIGHTRULES + " TEXT," +
                 COLUMN_DUTYONBOARD + " TEXT" +
                 ")";
-        db.execSQL(CREATE_PRODUCTS_TABLE);
+        db.execSQL(CREATE_FLIGHTS_TABLE);
     }
 
     //Αναβάθμιση ΒΔ: εδώ τη διαγραφώ και τη ξαναδημιουργώ ίδια
@@ -90,17 +106,83 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
     }
 
 
-//    public Product findProduct(String productname) {
-//        String query = "SELECT * FROM " + TABLE_PRODUCTS + " WHERE " +
-//                COLUMN_PRODUCTNAME + " = '" + productname + "'"; SQLiteDatabase db = this.getWritableDatabase();
-//        Cursor cursor = db.rawQuery(query, null);
-//        Product product = new Product();
+//set title to excel
+    private void firstRow(HSSFCell hssfCell,HSSFRow hssfRow,HSSFSheet hssfSheet) {
+        hssfRow = hssfSheet.createRow(0);
+        hssfCell = hssfRow.createCell(0);
+        hssfCell.setCellValue("No.");
+        hssfCell = hssfRow.createCell(1);
+        hssfCell.setCellValue("Date");
+        hssfCell = hssfRow.createCell(2);
+        hssfCell.setCellValue("Type");
+        hssfCell = hssfRow.createCell(3);
+        hssfCell.setCellValue("AirCraft No");
+        hssfCell = hssfRow.createCell(4);
+        hssfCell.setCellValue("From");
+        hssfCell = hssfRow.createCell(5);
+        hssfCell.setCellValue("To");
+        hssfCell = hssfRow.createCell(6);
+        hssfCell.setCellValue("Landings");
+        hssfCell = hssfRow.createCell(7);
+        hssfCell.setCellValue("Mission");
+        hssfCell = hssfRow.createCell(8);
+        hssfCell.setCellValue("Hours");
+        hssfCell = hssfRow.createCell(9);
+        hssfCell.setCellValue("Light Conts");
+        hssfCell = hssfRow.createCell(10);
+        hssfCell.setCellValue("Flight Type");
+    }
+
+
+
+    public String writeFlightsToExcel() {
+
+        String query = "SELECT * FROM " + TABLE_FLIGHTS + ";";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
+        HSSFSheet hssfSheet = hssfWorkbook.createSheet();
+        HSSFCell hssfCell = null;
+        HSSFRow hssfRow = null;
+
+        //initial
+        firstRow(hssfCell,hssfRow,hssfSheet);
+
+        if (cursor.moveToFirst()) {
+            int i = 1;
+            do {
+                hssfRow = hssfSheet.createRow(i);
+
+                for (int j = 0; j < 11; j++) {
+                    hssfCell = hssfRow.createCell(j);
+                    hssfCell.setCellValue(cursor.getString(j));
+                }
+                i++;
+            } while (cursor.moveToNext());
+
+        }
+        try {
+            System.out.println("this is"+!filePath.exists());
+            if (!filePath.exists()) {
+                filePath.createNewFile();
+            }
+            FileOutputStream fileOutputStream = new FileOutputStream(filePath);
+            hssfWorkbook.write(fileOutputStream);
+            if (fileOutputStream != null) {
+                fileOutputStream.flush();
+                fileOutputStream.close();
+            }
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+
+        return filePath.getAbsolutePath();
 //        if (cursor.moveToFirst()) {
 //            cursor.moveToFirst(); product.setID(Integer.parseInt(cursor.getString(0))); product.setProductName(cursor.getString(1)); product.setQuantity(Integer.parseInt(cursor.getString(2))); cursor.close();
 //        } else {
 //            product = null;
 //        }
 //        db.close(); return product;
-//    }
-    //Delete RegistrationActivity method
+    }
+//    Delete RegistrationActivity method
 }

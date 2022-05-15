@@ -98,7 +98,7 @@
             android:textColor="@android:color/holo_red_dark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Save_prefs_Button" />
+            app:layout_constraintTop_toBottomOf="@+id/DB_exportButton" />
 
         <CheckBox
             android:id="@+id/rememberMeCheckbox"
@@ -109,6 +109,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/StartingHoursInput" />
+
+        <Button
+            android:id="@+id/DB_exportButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Export Database"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Save_prefs_Button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

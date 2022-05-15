@@ -7,19 +7,30 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Currency;
 import java.util.jar.Attributes;
 
 public class PreferencesActivity extends AppCompatActivity {
-    public static Button SaveBtn, ResetDB;
+    public static Button SaveBtn, ResetDB, ExportDB;
     EditText NameInput, email, hours;
     public CheckBox rememberCheckbox;
 
@@ -114,6 +125,16 @@ public class PreferencesActivity extends AppCompatActivity {
                             }
                 });
                 alertDialog.show();
+            }
+        });
+
+        ExportDB = (Button) findViewById(R.id.DB_exportButton);
+        ExportDB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String path=flightsDBprefs.writeFlightsToExcel();
+                Toast.makeText(PreferencesActivity.this,"path: "+path ,Toast.LENGTH_LONG).show();
             }
         });
     }

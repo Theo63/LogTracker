@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.DatePicker;
 
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -31,10 +32,23 @@ public  class DatePickerFragment extends DialogFragment implements DatePickerDia
         date.add(0,day);
         date.add(1,(month + 1));
         date.add(2,year);
-        System.out.println("the date is "+"day: "+ day+" month: "+ (month + 1) + " of year: " + year);
-        com.example.logtracker.RegistrationActivity.setDateButton(date);
-
+        if(this.getTag().equals("datePicker")) { //for registration fragment
+            System.out.println("the date is " + "day: " + day + " month: " + (month + 1) + " of year: " + year);
+            com.example.logtracker.RegistrationActivity.setDateButton(date);
+        }
+        else if (this.getTag().equals("fromPicker")){ //for search fragment
+            int mode =0; //for from date
+            com.example.logtracker.SearchActivity.setDateButton(date,mode);
+            System.out.println("from picked");
+        }
+        else if(this.getTag().equals("untilPicker")){
+            int mode =1; //for until date
+            com.example.logtracker.SearchActivity.setDateButton(date,mode);
+            System.out.println("until picked");
+        }
     }
+
+
 
     public ArrayList<Integer> getDates(){
         return date;

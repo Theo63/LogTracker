@@ -59,7 +59,7 @@ public class flightLog {
     }
 
     //getters
-    public static String getDateSelected() {
+    public static String getDateSelected() {//get dates to string in sql format
         String date = "";
         int counter=0;
         for (Integer item: dateSelected){
@@ -71,7 +71,7 @@ public class flightLog {
         }
         return date;
     }
-    public static String getTimeSelected() {
+    public static String getTimeSelected() {//get time to string in sql format
         String time = "";
         int counter=0;
         for (Integer item: timeSelected){

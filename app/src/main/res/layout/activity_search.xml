@@ -8,6 +8,58 @@
     android:background="#557DBC"
     tools:context=".SearchActivity">
 
+    <Spinner
+        android:id="@+id/duty_on_board_spinnerSearch"
+        android:layout_width="176dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:spinnerMode="dropdown"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type_of_flight_spinnerSearch"
+        app:layout_constraintWidth_min="128dp" />
+
+    <Spinner
+        android:id="@+id/type_of_flight_spinnerSearch"
+        android:layout_width="176dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:spinnerMode="dropdown"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationToSearch" />
+
+    <EditText
+        android:id="@+id/aircraft_id_inputSearch"
+        android:layout_width="176dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:inputType="textPersonName|textCapCharacters"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aircraft_type_spinnerSearch" />
+
+    <Spinner
+        android:id="@+id/aircraft_type_spinnerSearch"
+        android:layout_width="176dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:spinnerMode="dropdown"
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateUntilButton"
+        app:layout_constraintWidth_min="128dp" />
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="187dp"
@@ -35,7 +87,7 @@
         android:id="@+id/dateSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:text="Date"
         android:textColor="#04080F"
         android:textSize="16sp"
@@ -50,6 +102,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:text="Aircraft Type"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateFromButton" />
 
@@ -60,6 +113,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:text="Aircraft ID"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AircraftTypeText" />
 
@@ -69,49 +123,32 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Location"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AircraftIDText" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/typeofFlightText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text="Type of flight"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/locationFromSearch" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/dutyonBoardText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text="Duty on Board"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/typeofFlightText" />
 
     <Button
         android:id="@+id/dateFromButton"
@@ -130,12 +167,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="64dp"
+        android:onClick="showPickerDialog"
         android:text="   /    /"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateSearch" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/locationFromSearch"
         android:layout_width="104dp"
         android:layout_height="41dp"
         android:layout_marginStart="64dp"
@@ -148,7 +186,7 @@
         app:layout_constraintTop_toBottomOf="@+id/LocationText" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/locationToSearch"
         android:layout_width="114dp"
         android:layout_height="36dp"
         android:layout_marginTop="8dp"
@@ -159,4 +197,27 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LocationText" />
+
+    <Button
+        android:id="@+id/searchBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Search"
+        android:textColor="#A1C6EA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/duty_on_board_spinnerSearch" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="411dp"
+        android:layout_height="474dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchBtn" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

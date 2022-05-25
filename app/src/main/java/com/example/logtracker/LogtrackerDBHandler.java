@@ -191,52 +191,72 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
         ArrayList<ArrayList> finalData = new ArrayList<>();
         ArrayList<String> flightData = new ArrayList<>();
         String and="";
+        boolean allQuery = true; //if we pass no query attributes
         //String query = "SELECT * FROM " + TABLE_FLIGHTS + ";";
         String query= "SELECT * FROM " + TABLE_FLIGHTS + " WHERE " ;
         if (searchData.containsKey("fromDate")){
             String temp = (String) searchData.get("fromDate");
-            query=query+"date>'"+temp+"';";
+            query=query+"date>'"+temp+"'";
             and=" AND ";
+            allQuery = false;
         }
         if (searchData.containsKey("untilDate")){
             String temp = (String) searchData.get("untilDate");
-            query=query+and+"date<'"+temp+"';";
+            query=query+and+"date<'"+temp+"'";
             and=" AND ";
+            allQuery = false;
         }
         if (searchData.containsKey("aircraftType")){
             String temp = (String) searchData.get("aircraftType");
-            query=query+and+"aircraftType LIKE '%"+temp+"%';";
+            query=query+and+"aircraftType LIKE '%"+temp+"%'";
             and=" AND ";
+            allQuery = false;
         }
         if (searchData.containsKey("typeOfFlight")){
             String temp = (String) searchData.get("typeOfFlight");
-            query=query+and+"typeOfFlight LIKE '%"+temp+"%';";
+            query=query+and+"typeOfFlight LIKE '%"+temp+"%'";
             and=" AND ";
+            allQuery = false;
         }
         if (searchData.containsKey("dutyOnBoard")){
             String temp = (String) searchData.get("dutyOnBoard");
-            query=query+and+"dutyOnBoard LIKE '%"+temp+"%';";
+            query=query+and+"dutyOnBoard LIKE '%"+temp+"%'";
             and=" AND ";
+            allQuery = false;
         }
         if (searchData.containsKey("aircraftId")){
             String temp = (String) searchData.get("aircraftId");
-            query=query+and+"aircraftID LIKE '%"+temp+"%';";
-            and=" AND ";
+            if (!searchData.get("aircraftId").equals("")) // edittext filed return "" when nothing is picked
+            {
+                query=query+and+"aircraftID LIKE '%"+temp+"%'";
+                and=" AND ";
+                allQuery = false;
+            }
+
         }
         if (searchData.containsKey("fromLocation")){
             String temp = (String) searchData.get("fromLocation");
-            query=query+and+"arrival LIKE '%"+temp+"%';";
-            and=" AND ";
+            if (!searchData.get("fromLocation").equals("")){
+                query=query+and+"arrival LIKE '%"+temp+"%'";
+                and=" AND ";
+                allQuery = false;
+            }
         }
         if (searchData.containsKey("toLocation")){
             String temp = (String) searchData.get("toLocation");
-            query=query+and+"destination LIKE '%"+temp+"%';";
-            and=" AND ";
+            if (!searchData.get("toLocation").equals("")){
+                query=query+and+"destination LIKE '%"+temp+"%'";
+                and=" AND ";
+                allQuery = false;
+            }
+
         }
-        if (searchData.isEmpty()){ //if everything is blank we get the user everything
+        if (allQuery){ //if everything is blank we get the user everything
             query = "SELECT * FROM " + TABLE_FLIGHTS + ";";
         }
-
+        else
+            query=query+";"; //we add last ; to query
+        System.out.println(query);
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
 
@@ -252,7 +272,6 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
 
         }
-        db.close();//close database
         return finalData;
 
     }

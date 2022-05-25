@@ -179,14 +179,9 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
         } catch (Exception e) {
             return e.getMessage();
         }
-
+        db.close();//close database
         return filePath.getAbsolutePath();
-//        if (cursor.moveToFirst()) {
-//            cursor.moveToFirst(); product.setID(Integer.parseInt(cursor.getString(0))); product.setProductName(cursor.getString(1)); product.setQuantity(Integer.parseInt(cursor.getString(2))); cursor.close();
-//        } else {
-//            product = null;
-//        }
-//        db.close(); return product;
+
     }
 
 
@@ -202,7 +197,6 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
             String temp = (String) searchData.get("fromDate");
             query=query+"date>'"+temp+"';";
             and=" AND ";
-            System.out.println(query);
         }
         if (searchData.containsKey("untilDate")){
             String temp = (String) searchData.get("untilDate");
@@ -258,6 +252,7 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
 
         }
+        db.close();//close database
         return finalData;
 
     }

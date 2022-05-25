@@ -182,6 +182,9 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
         searchValues.put("toLocation",locationToText.getText().toString());
     }
 
-
+    @Override
+    public void onBackPressed() {   // resets  Search activity and every field is cleared for a new search
+        startActivity(new Intent(this, MainActivity.class));
+    }
 
 }

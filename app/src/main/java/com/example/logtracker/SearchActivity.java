@@ -2,6 +2,7 @@ package com.example.logtracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +23,10 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
     public EditText aircraftIDText, locationFromText, locationToText;
     public Spinner aircraftTypeSpinner, typeofFlightSpinner, dutyonBoardSpinner;
     public static HashMap<String, String> searchValues;
+
+    ArrayList<ArrayList> flightResults;
     LogtrackerDBHandler flightsDB;
+
 //    Snackbar errorSnack = Snackbar.make(findViewById(R.id.registrationLayout);
 
 
@@ -45,6 +49,8 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
         locationToText = (EditText) findViewById(R.id.locationToSearch);
 
         searchValues = new HashMap<String, String>(); //put all values for search in a hashmap
+        flightResults = new ArrayList<>();
+        flightsDB = new LogtrackerDBHandler(this); //creates db obj
         // key values are  : fromDate, untilDate , aircraftType, typeOfFlight, dutyOnBoard, aircraftId, fromLocation, toLocation
 
         ///////// Spiner Section //////
@@ -76,14 +82,21 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
         SearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getInputValuesSearch();
+                getInputValuesSearch(); //collect editText values
+                flightResults = flightsDB.getFlightSearch(searchValues); //call LogtrackerDBHandler to get
+                System.out.println(searchValues);
+                //// show results in showSearchActivity /////
+                Intent intentShow = new Intent(SearchActivity.this, showSearchActivity.class );
+                intentShow.putExtra("search values", flightResults);
+                startActivity(intentShow);
+
+                finish();
 
             }
         });
 
 
     }
-
 
 
     ////// Date from - to  button section //////
@@ -98,6 +111,7 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
         }
 
     }
+
 
     //when a date is picket we change the value of the button
     public static void setDateButton(ArrayList<Integer> dates, int mode ){

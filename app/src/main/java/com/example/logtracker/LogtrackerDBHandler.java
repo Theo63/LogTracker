@@ -20,6 +20,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LogtrackerDBHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
@@ -131,6 +133,8 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
         hssfCell.setCellValue("Light Conts");
         hssfCell = hssfRow.createCell(10);
         hssfCell.setCellValue("Flight Type");
+        hssfCell = hssfRow.createCell(11);
+        hssfCell.setCellValue("Duty on Board");
     }
 
 
@@ -153,7 +157,7 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
             do {
                 hssfRow = hssfSheet.createRow(i);
 
-                for (int j = 0; j < 11; j++) {
+                for (int j = 0; j < 12; j++) {
                     hssfCell = hssfRow.createCell(j);
                     hssfCell.setCellValue(cursor.getString(j));
                 }
@@ -184,5 +188,78 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
 //        }
 //        db.close(); return product;
     }
-//    Delete RegistrationActivity method
+
+
+
+    public ArrayList<ArrayList> getFlightSearch(HashMap searchData){
+        // key values are  : fromDate, untilDate , aircraftType, typeOfFlight, dutyOnBoard, aircraftId, fromLocation, toLocation
+        ArrayList<ArrayList> finalData = new ArrayList<>();
+        ArrayList<String> flightData = new ArrayList<>();
+        String and="";
+        //String query = "SELECT * FROM " + TABLE_FLIGHTS + ";";
+        String query= "SELECT * FROM " + TABLE_FLIGHTS + " WHERE " ;
+        if (searchData.containsKey("fromDate")){
+            String temp = (String) searchData.get("fromDate");
+            query=query+"date>'"+temp+"';";
+            and=" AND ";
+            System.out.println(query);
+        }
+        if (searchData.containsKey("untilDate")){
+            String temp = (String) searchData.get("untilDate");
+            query=query+and+"date<'"+temp+"';";
+            and=" AND ";
+        }
+        if (searchData.containsKey("aircraftType")){
+            String temp = (String) searchData.get("aircraftType");
+            query=query+and+"aircraftType LIKE '%"+temp+"%';";
+            and=" AND ";
+        }
+        if (searchData.containsKey("typeOfFlight")){
+            String temp = (String) searchData.get("typeOfFlight");
+            query=query+and+"typeOfFlight LIKE '%"+temp+"%';";
+            and=" AND ";
+        }
+        if (searchData.containsKey("dutyOnBoard")){
+            String temp = (String) searchData.get("dutyOnBoard");
+            query=query+and+"dutyOnBoard LIKE '%"+temp+"%';";
+            and=" AND ";
+        }
+        if (searchData.containsKey("aircraftId")){
+            String temp = (String) searchData.get("aircraftId");
+            query=query+and+"aircraftID LIKE '%"+temp+"%';";
+            and=" AND ";
+        }
+        if (searchData.containsKey("fromLocation")){
+            String temp = (String) searchData.get("fromLocation");
+            query=query+and+"arrival LIKE '%"+temp+"%';";
+            and=" AND ";
+        }
+        if (searchData.containsKey("toLocation")){
+            String temp = (String) searchData.get("toLocation");
+            query=query+and+"destination LIKE '%"+temp+"%';";
+            and=" AND ";
+        }
+        if (searchData.isEmpty()){ //if everything is blank we get the user everything
+            query = "SELECT * FROM " + TABLE_FLIGHTS + ";";
+        }
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            int i = 1;
+            do {
+                for (int j = 0; j < 12; j++) {
+                    flightData.add(cursor.getString(j));
+                }
+                i++;
+                finalData.add(flightData);
+                flightData = new ArrayList<>();
+            } while (cursor.moveToNext());
+
+        }
+        return finalData;
+
+    }
+
 }

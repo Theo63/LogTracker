@@ -135,7 +135,14 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
         String date = "";
         int counter=0;
         for (Integer item: dateSelected){
-            date=item+date;
+            String temp = "";
+            if (item>0 && item<10){ // YYYY-MM-DD format for SQL
+                temp = "0"+item.toString();
+                date=temp+date;
+            }
+            else {
+                date=item+date;
+            }
             if (counter<2){
                 date="-"+date;
                 counter++;

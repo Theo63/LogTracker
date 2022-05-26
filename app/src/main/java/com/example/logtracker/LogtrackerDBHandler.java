@@ -196,13 +196,13 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
         String query= "SELECT * FROM " + TABLE_FLIGHTS + " WHERE " ;
         if (searchData.containsKey("fromDate")){
             String temp = (String) searchData.get("fromDate");
-            query=query+"date>'"+temp+"'";
+            query=query+"date>='"+temp+"'";
             and=" AND ";
             allQuery = false;
         }
         if (searchData.containsKey("untilDate")){
             String temp = (String) searchData.get("untilDate");
-            query=query+and+"date<'"+temp+"'";
+            query=query+and+"date<='"+temp+"'";
             and=" AND ";
             allQuery = false;
         }

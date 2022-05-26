@@ -28,7 +28,7 @@ public  class DatePickerFragment extends DialogFragment implements DatePickerDia
 
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
-        // Do something with the date chosen by the user
+        //set the buttons
         date.add(0,day);
         date.add(1,(month + 1));
         date.add(2,year);

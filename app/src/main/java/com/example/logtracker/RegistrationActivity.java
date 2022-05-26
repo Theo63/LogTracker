@@ -1,7 +1,9 @@
 package com.example.logtracker;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -32,14 +34,14 @@ Spinner type_of_aircraftSpinner,type_of_flightSpinner,light_condSpinner,flight_r
         getWindow().setNavigationBarColor(Color.parseColor("#557DBC"));
         flightsDB = new LogtrackerDBHandler(this); //creates db obj
         aircraftid = (EditText) findViewById(R.id.aircraft_id_input);
-        landings =  (EditText) findViewById(R.id.landings_input);
+        landings = (EditText) findViewById(R.id.landings_input);
         arrival = (EditText) findViewById(R.id.arrivalInput);
         destination = (EditText) findViewById(R.id.destinationInput);
         DateBtn = (Button) findViewById(R.id.datePicker);
         TimeBtn = (Button) findViewById(R.id.timePicker);
         RegisterBtn = (Button) findViewById(R.id.registerButton);
         Snackbar errorSnack = Snackbar.make(findViewById(R.id.registrationLayout),
-                "Please fill all the fields",1500);
+                "Please fill all the fields", 1500);
 
         type_of_aircraftSpinner = (Spinner) findViewById(R.id.aircraft_type_spinner);
         type_of_flightSpinner = (Spinner) findViewById(R.id.type_of_flight_spinner);
@@ -92,35 +94,49 @@ Spinner type_of_aircraftSpinner,type_of_flightSpinner,light_condSpinner,flight_r
             public void onClick(View view) {
                 try {
                     getInputValues();
-                    System.out.println(flightLog.getDateSelected()+"\n"+flightLog.getAircraftType()+"\n"+flightLog.getAircraftID()+"\n"+flightLog.getLandingsInput()+"\n"+
-                            flightLog.getTimeSelected()+"\n"+flightLog.getLightCond()+"\n"+flightLog.getFlightRules()+"\n"+flightLog.getDutyonBoard());
                     boolean dataCompletion = flightLog.fieldCompletion();
-                    if (dataCompletion){
-                        boolean isInserted = flightsDB.addFlight();
-                        if (isInserted) {
-                            Toast.makeText(RegistrationActivity.this, "Flight Registered successfully", Toast.LENGTH_LONG).show();
-                            resetActivity();
-                        }
+                    if (dataCompletion) {
+                                    // setting a warning dialog before resetting the database
+                                    AlertDialog alertDialog = new AlertDialog.Builder(RegistrationActivity.this).create();
+                                    alertDialog.setTitle("Logbook Warning");
+                                    alertDialog.setMessage("Writting to logbook cannot be undone. Have you checked your flight data?");
+                                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
+                                            new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialogInterface, int i) {
 
-                        else
-                            Toast.makeText(RegistrationActivity.this,"Error in Flight RegistrationActivity",Toast.LENGTH_LONG).show();
-                    }
-                    else {
-                        Toast.makeText(RegistrationActivity.this,"Please fill all the fields",Toast.LENGTH_LONG).show();
+                                                    boolean isInserted = flightsDB.addFlight();
+                                                    if (isInserted) {
+                                                        Toast.makeText(RegistrationActivity.this, "Flight Registered successfully", Toast.LENGTH_LONG).show();
+                                                        resetActivity();
+                                                    } else
+                                                        Toast.makeText(RegistrationActivity.this, "Error in Flight RegistrationActivity", Toast.LENGTH_LONG).show();
+                                                }
+                                            });
+                                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE,"No",
+                                                        new DialogInterface.OnClickListener()
+
+                                                {
+                                                    @Override
+                                                    public void onClick (DialogInterface
+                                                    dialogInterface,int i){
+                                                    alertDialog.dismiss();
+                                                }
+                                                });
+                                    alertDialog.show();
+
+                    }else {
+                        Toast.makeText(RegistrationActivity.this, "Please fill all the fields", Toast.LENGTH_LONG).show();
                     }
 
-                }
-                catch(Exception e) {
+                } catch (Exception e) {
                     errorSnack.show();
-                    }
-
                 }
 
             }
-        );
-
-
+        });
     }
+
 
 
 ///////////////// Date and time fragment section Look @ their classes too //////////////////////////
@@ -194,7 +210,7 @@ Spinner type_of_aircraftSpinner,type_of_flightSpinner,light_condSpinner,flight_r
 
 
     //pick input values in register button
-    public void getInputValues(){
+    private void getInputValues(){
         flightLog.setLandingsInput(Integer.parseInt(landings.getText().toString()));
         flightLog.setAircraftID(aircraftid.getText().toString());
         flightLog.setArrival(arrival.getText().toString());
@@ -218,11 +234,6 @@ Spinner type_of_aircraftSpinner,type_of_flightSpinner,light_condSpinner,flight_r
 
 
     }
-
-
-
-
-
 
 
 }

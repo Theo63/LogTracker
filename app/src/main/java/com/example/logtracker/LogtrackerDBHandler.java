@@ -272,6 +272,7 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
 
         }
+        db.close();//close database
         return finalData;
 
     }

@@ -134,7 +134,7 @@ public class PreferencesActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String path=flightsDBprefs.writeFlightsToExcel();
-                Toast.makeText(PreferencesActivity.this,"path: "+path ,Toast.LENGTH_LONG).show();
+                Toast.makeText(PreferencesActivity.this,"FLights.xls is in your internal storage home directory" ,Toast.LENGTH_LONG).show();
             }
         });
     }

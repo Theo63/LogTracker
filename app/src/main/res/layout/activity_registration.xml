@@ -16,10 +16,9 @@
 
             <Button
                 android:id="@+id/timePicker"
-                android:layout_width="0dp"
-                android:layout_height="29dp"
-                android:layout_marginTop="14dp"
-                android:background="#00FFFFFF"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
                 android:onClick="showPickerDialog"
                 android:padding="0dp"
                 android:paddingLeft="0dp"
@@ -31,8 +30,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/type_of_flight_spinner"
-                app:strokeColor="#FFFFFF"
-                app:strokeWidth="2dp"
                 tools:visibility="visible" />
 
 
@@ -223,12 +220,11 @@
 
             <Button
                 android:id="@+id/datePicker"
-                android:layout_width="0dp"
-                android:layout_height="29dp"
-                android:layout_marginTop="60dp"
-                android:background="#00FFFFFF"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="52dp"
                 android:onClick="showPickerDialog"
-                android:padding="0dp"
+                android:padding="3dp"
                 android:paddingLeft="0dp"
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp"
@@ -239,8 +235,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/Registration_title"
-                app:strokeColor="#FFFFFF"
-                app:strokeWidth="2dp"
                 tools:visibility="visible" />
 
 
@@ -248,7 +242,7 @@
                 android:id="@+id/aircraft_id_input"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/border"
                 android:ems="10"
                 android:inputType="textPersonName|textCapCharacters"
@@ -320,7 +314,7 @@
                 android:id="@+id/aircraft_type_spinner"
                 android:layout_width="0dp"
                 android:layout_height="19dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="11dp"
                 android:spinnerMode="dropdown"
                 android:textAlignment="textStart"
                 app:layout_constraintDimensionRatio="8"
@@ -345,7 +339,7 @@
                 android:id="@+id/light_conditions_spinner"
                 android:layout_width="0dp"
                 android:layout_height="19dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="8dp"
                 android:spinnerMode="dropdown"
                 android:textAlignment="textStart"
                 app:layout_constraintDimensionRatio="8"
@@ -358,7 +352,7 @@
                 android:id="@+id/flight_rules_spinner"
                 android:layout_width="0dp"
                 android:layout_height="19dp"
-                android:layout_marginTop="19dp"
+                android:layout_marginTop="18dp"
                 android:spinnerMode="dropdown"
                 android:textAlignment="textStart"
                 app:layout_constraintDimensionRatio="8"

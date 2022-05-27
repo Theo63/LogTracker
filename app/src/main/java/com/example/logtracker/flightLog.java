@@ -81,7 +81,7 @@ public class flightLog {
     public static String getTimeSelected() {//get time to string in sql format
         String time = "";
         int counter=0;
-        for (Integer item: timeSelected){
+        for (Integer item: timeSelected){// every item to String
             time=time+item;
             if (counter<1){
                 time=time+":";

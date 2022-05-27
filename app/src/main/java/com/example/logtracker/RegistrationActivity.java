@@ -115,7 +115,6 @@ Spinner type_of_aircraftSpinner,type_of_flightSpinner,light_condSpinner,flight_r
                                             });
                                     alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE,"No",
                                                         new DialogInterface.OnClickListener()
-
                                                 {
                                                     @Override
                                                     public void onClick (DialogInterface

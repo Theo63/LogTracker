@@ -33,8 +33,6 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_AIRCRAFTID = "aircraftID";
     public static final String COLUMN_ARRIVAL = "arrival";
     public static final String COLUMN_DESTINATION = "destination";
-//    public static final String COLUMN_ARRIVAL = "arrival"; //arrival
-//    public static final String COLUMN_DESTINATION = "destination"; //destination
     public static final String COLUMN_LANDINGS = "landings";
     public static final String COLUMN_TYPEOFFLIGHT = "typeOfFlight";
     public static final String COLUMN_FLIGHTDURATION = "flightDuration";
@@ -78,7 +76,7 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
         onCreate(db); }
 
     public boolean addFlight() {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase(); //opens the database
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_DATE,flightLog.getDateSelected());
         contentValues.put(COLUMN_AIRCRAFTTYPE,flightLog.getAircraftType());
@@ -94,11 +92,15 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
         long result = db.insert(TABLE_FLIGHTS,null,contentValues);
 
         if (result == -1){
+            db.close();
             return false;
         }
-        else
+        else{
+            db.close();
             return true;
-//        db.close();
+        }
+
+
     }
 
     public void resetDB(){

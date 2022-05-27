@@ -7,9 +7,6 @@
     android:layout_height="match_parent"
     android:background="#557DBC">
 
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/searchLayout"
@@ -21,9 +18,7 @@
                 android:id="@+id/duty_on_board_spinnerSearch"
                 android:layout_width="0dp"
                 android:layout_height="19dp"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
                 android:spinnerMode="dropdown"
                 android:textAlignment="textStart"
                 app:layout_constraintDimensionRatio="8"
@@ -36,9 +31,7 @@
                 android:id="@+id/type_of_flight_spinnerSearch"
                 android:layout_width="0dp"
                 android:layout_height="19dp"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
                 android:spinnerMode="dropdown"
                 android:textAlignment="textStart"
                 app:layout_constraintDimensionRatio="8"
@@ -50,9 +43,7 @@
                 android:id="@+id/aircraft_id_inputSearch"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
                 android:background="@drawable/border"
                 android:ems="10"
                 android:inputType="textPersonName|textCapCharacters"
@@ -70,9 +61,7 @@
                 android:id="@+id/aircraft_type_spinnerSearch"
                 android:layout_width="0dp"
                 android:layout_height="19dp"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
                 android:spinnerMode="dropdown"
                 android:textAlignment="textStart"
                 app:layout_constraintDimensionRatio="8"
@@ -118,11 +107,9 @@
 
             <TextView
                 android:id="@+id/AircraftTypeText"
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
                 android:text="Aircraft Type"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -131,11 +118,9 @@
 
             <TextView
                 android:id="@+id/AircraftIDText"
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
                 android:text="Aircraft ID"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -155,11 +140,9 @@
 
             <TextView
                 android:id="@+id/typeofFlightText"
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginEnd="32dp"
                 android:text="Type of flight"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -168,11 +151,9 @@
 
             <TextView
                 android:id="@+id/dutyonBoardText"
-                android:layout_width="wrap_content"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
                 android:text="Duty on Board"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
@@ -183,9 +164,7 @@
                 android:id="@+id/dateFromButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="64dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
                 android:onClick="showPickerDialog"
                 android:text="   /    /"
                 app:layout_constraintDimensionRatio="2"
@@ -197,9 +176,7 @@
                 android:id="@+id/dateUntilButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="64dp"
                 android:onClick="showPickerDialog"
                 android:text="   /    /"
                 app:layout_constraintDimensionRatio="2"
@@ -211,9 +188,7 @@
                 android:id="@+id/locationFromSearch"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:hint="from"
                 android:inputType="textPersonName"
@@ -227,9 +202,7 @@
                 android:id="@+id/locationToSearch"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
                 android:ems="10"
                 android:hint="to"
                 android:inputType="textPersonName"
@@ -254,11 +227,16 @@
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline3"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:orientation="vertical"
-                app:layout_constraintGuide_begin="199dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_percent="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </HorizontalScrollView>
 </ScrollView>

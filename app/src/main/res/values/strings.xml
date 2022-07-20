@@ -3,15 +3,24 @@
     <string name="todo">TODO</string>
     <string name="pickdate">pickDate</string>
 
-    <string name="Checkbox">com.example.logtracker.CheckPref</string>
-    <string name="Name">com.example.logtracker.NamePref</string>
-    <string name="Email">com.example.logtracker.EmailPref</string>
-    <string name="Hours">com.example.logtracker.HoursPref</string>
+    <string name="Aircraft1">com.example.logtracker.Aircraft1Pref</string>
+    <string name="Aircraft2">com.example.logtracker.Aircraft2Pref</string>
+    <string name="Aircraft3">com.example.logtracker.Aircraft3Pref</string>
+    <string name="Aircraft4">com.example.logtracker.Aircraft4Pref</string>
+    <string name="pos1">com.example.logtracker.pos1Pref</string>
+    <string name="pos2">com.example.logtracker.pos2Pref</string>
+    <string name="pos3">com.example.logtracker.pos3Pref</string>
+    <string name="pos4">com.example.logtracker.pos4Pref</string>
+    <string name="startingHours1">com.example.logtracker.StHr1Pref</string>
+    <string name="startingHours2">com.example.logtracker.StHr2Pref</string>
+    <string name="startingHours3">com.example.logtracker.StHr3Pref</string>
+    <string name="startingHours4">com.example.logtracker.StHr4Pref</string>
+
 
     //Preferences acrivity
-    <string name="Name_hint">Name</string>
-    <string name="mail_hint">e-mail</string>
-    <string name="starting_hours">Starting Hours</string>
+<!--    <string name="Name_hint">Name</string>-->
+<!--    <string name="mail_hint">e-mail</string>-->
+<!--    <string name="starting_hours">Starting Hours</string>-->
 
     <string-array name="Aircraft_types">
         <item>choose</item>
@@ -82,6 +91,7 @@
         <item>General purpose</item>
         <item>IFR flight training</item>
         <item>VFR flight training</item>
+        <item>Maintenance flight</item>
         <item>Rappel</item>
         <item>Hoist</item>
         <item>S.A.R</item>

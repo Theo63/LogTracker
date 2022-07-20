@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -14,12 +13,9 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.w3c.dom.ls.LSOutput;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -39,6 +35,8 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_LIGHTCONDITIONS = "lightConditions";
     public static final String COLUMN_FLIGHTRULES = "flightRules";
     public static final String COLUMN_DUTYONBOARD = "dutyOnBoard";
+
+    public static final String TABLE_HOURS= "hours";
     public File filePath = new File(Environment.getExternalStorageDirectory().toString()+"/"+"flights.xls");
 
 
@@ -51,7 +49,7 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_FLIGHTS_TABLE = "CREATE TABLE " +
+        String CREATE_FLIGHTS_TABLE = "CREATE TABLE IF NOT EXISTS " +
                 TABLE_FLIGHTS + "(" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 COLUMN_DATE + " TEXT," +
@@ -67,6 +65,14 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
                 COLUMN_DUTYONBOARD + " TEXT" +
                 ")";
         db.execSQL(CREATE_FLIGHTS_TABLE);
+
+        String CREATE_HOURS_TABLE = "CREATE TABLE IF NOT EXISTS " +
+                TABLE_HOURS + "(" +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                COLUMN_AIRCRAFTTYPE + " TEXT UNIQUE," +
+                COLUMN_FLIGHTDURATION + " TEXT" +
+                ")";
+        db.execSQL(CREATE_HOURS_TABLE);
     }
 
     //Αναβάθμιση ΒΔ: εδώ τη διαγραφώ και τη ξαναδημιουργώ ίδια
@@ -106,6 +112,12 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
     public void resetDB(){
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_FLIGHTS);
+        onCreate(db);
+    }
+
+    public void resetStartingHoursTable(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_HOURS);
         onCreate(db);
     }
 
@@ -278,5 +290,66 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
         return finalData;
 
     }
+
+    public boolean addStartingHours(String type , String duration ) {
+        SQLiteDatabase db = this.getWritableDatabase(); //opens the database
+        String query= "SELECT "+ COLUMN_AIRCRAFTTYPE +" FROM " + TABLE_HOURS ;
+        Cursor cursor = db.rawQuery(query, null);
+        System.out.println(cursor.getColumnCount());
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_AIRCRAFTTYPE,type);
+        contentValues.put(COLUMN_FLIGHTDURATION,duration);
+        long result = db.insert(TABLE_HOURS,null,contentValues);
+        if (result == -1){
+            db.close();
+            return false;
+        }
+        else{
+            db.close();
+            return true;
+        }
+
+
+    }
+
+    public HashMap<String,Integer> getTotalHours(){
+        SQLiteDatabase db = this.getWritableDatabase(); //opens the database
+        String query= "SELECT * FROM " + TABLE_HOURS ;
+        Cursor cursor = db.rawQuery(query, null);
+        HashMap<String, Integer> types = new HashMap<>();
+        if (cursor.moveToFirst()) {
+            do {
+                types.put(cursor.getString(1),Integer.valueOf(cursor.getString(2)));
+                //System.out.println(types);
+            } while (cursor.moveToNext());
+        }
+        for(String key: types.keySet()) {
+            String query2 = "SELECT "+ COLUMN_FLIGHTDURATION + " FROM " + TABLE_FLIGHTS +" WHERE " + COLUMN_AIRCRAFTTYPE+ " = '" + key +"';";
+            Cursor cursor2 = db.rawQuery(query2, null);
+            System.out.println(query2);
+            int sum =0;
+            if (cursor2.moveToFirst() && cursor!=null && cursor.getCount()>0) {
+                do {
+                    String[] duration  = cursor2.getString(0).split(":");
+                    sum += ((Integer.parseInt(duration[0])*60) + Integer.parseInt(duration[1]));
+                    //cursor2.getString(0);    /// get before and after :
+                    //types.put(cursor.getString(1),Integer.valueOf(cursor.getString(2)));
+
+                } while (cursor2.moveToNext());
+            }
+            types.put(key,types.get(key)*60+sum);
+            System.out.println("type: "+key+" total hours "+ types.get(key)/60+" hours and "+types.get(key)%60+" minutes ");
+
+
+        }
+        return types;
+        /////left here
+
+
+
+        //Cursor cursor = db.rawQuery(query, null);
+    }
+
 
 }

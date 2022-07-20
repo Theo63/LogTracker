@@ -29,6 +29,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Currency;
 import java.util.HashMap;
 import java.util.jar.Attributes;
@@ -39,7 +40,8 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
     Spinner aircraftSpinner;
     String aircraft;
     Integer pos1;
-
+    ArrayList<ArrayList> hoursArrayList;
+    ArrayList<String> typeHoursList;
     HashMap<String, Integer> totalHours;
     LogtrackerDBHandler flightsDBprefs;
 
@@ -54,13 +56,14 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
         getWindow().setNavigationBarColor(Color.parseColor("#557DBC"));
         flightsDBprefs = new LogtrackerDBHandler(this); //creates db obj
         sharedpreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        editor = sharedpreferences.edit();
+        hoursArrayList = new ArrayList<>();
+        typeHoursList = new ArrayList<>();
 
         aircraftSpinner = (Spinner) findViewById(R.id.aircraft_pref_spinner1);
 
         // Create an ArrayAdapter using the string array and a default spinner layout for ALL Spinners
         ArrayAdapter<CharSequence> aircraft_adapter = ArrayAdapter.createFromResource(this,
-                R.array.Aircraft_types, android.R.layout.simple_spinner_item); //Aircraft_types is in res/values/strings.xml
+                R.array.Aircraft_types, R.layout.spinner_item); //Aircraft_types is in res/values/strings.xml
 
         // Specify the layout to use when the list of choices appears
         aircraft_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -127,7 +130,24 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
             @Override
             public void onClick(View view) {
                 totalHours = flightsDBprefs.getTotalHours();
+                for(String key: totalHours.keySet()) {
+                    typeHoursList.add(key);
+                    String hours = "";
+                    hours = totalHours.get(key)/60+" hours and "+totalHours.get(key)%60+" minutes ";
+                    typeHoursList.add(hours);
+                    hoursArrayList.add(typeHoursList);
+                    typeHoursList = new ArrayList<>();
+                }
 
+
+
+
+
+                Intent intentShow = new Intent(PreferencesActivity.this, showTotalHoursActivity.class );
+                intentShow.putExtra("total hours", hoursArrayList);
+                startActivity(intentShow);
+
+                finish();
             }
         });
 
@@ -194,6 +214,10 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+    }
 
+    @Override
+    public void onBackPressed() {   // resets  Search activity and every field is cleared for a new search
+        startActivity(new Intent(this, MainActivity.class));
     }
 }

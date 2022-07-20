@@ -1,6 +1,5 @@
 package com.example.logtracker;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class flightRVAdapter extends RecyclerView.Adapter<flightRVAdapter.ViewHolder> {
 
@@ -27,11 +25,11 @@ public class flightRVAdapter extends RecyclerView.Adapter<flightRVAdapter.ViewHo
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            date = itemView.findViewById(R.id.datetextView);
+            date = itemView.findViewById(R.id.typetextView);
             fromLoc = itemView.findViewById(R.id.fromLoctextView);
             toLoc = itemView.findViewById(R.id.toLoctextView);
             typeofaft = itemView.findViewById(R.id.aircftTypetextView);
-            aftid = itemView.findViewById(R.id.aircftIDTextView);
+            aftid = itemView.findViewById(R.id.totalHoursTextView);
             typeofflight = itemView.findViewById(R.id.typeOfFilghttextView);
             flightdur = itemView.findViewById(R.id.durationtextView);
             lightCont = itemView.findViewById(R.id.lightConttextView);

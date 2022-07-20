@@ -18,9 +18,9 @@
 
 
     //Preferences acrivity
-<!--    <string name="Name_hint">Name</string>-->
-<!--    <string name="mail_hint">e-mail</string>-->
-<!--    <string name="starting_hours">Starting Hours</string>-->
+    <!--    <string name="Name_hint">Name</string>-->
+    <!--    <string name="mail_hint">e-mail</string>-->
+    <!--    <string name="starting_hours">Starting Hours</string>-->
 
     <string-array name="Aircraft_types">
         <item>choose</item>

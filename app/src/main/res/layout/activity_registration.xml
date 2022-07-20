@@ -14,24 +14,6 @@
             app:layout_constraintDimensionRatio="2"
             >
 
-            <Button
-                android:id="@+id/timePicker"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginTop="8dp"
-                android:onClick="showPickerDialog"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingTop="0dp"
-                android:text="   :"
-                android:textAlignment="center"
-                android:textSize="14sp"
-                app:layout_constraintDimensionRatio="5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toBottomOf="@+id/type_of_flight_spinner"
-                tools:visibility="visible" />
-
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -64,7 +46,7 @@
                 android:id="@+id/date_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="64dp"
+                android:layout_marginTop="54dp"
                 android:text="Date"
                 android:textColor="#04080F"
                 android:textSize="16sp"
@@ -84,50 +66,7 @@
                 app:layout_constraintDimensionRatio="6"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/date_text" />
-
-            <TextView
-                android:id="@+id/aircraft_id_text3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Aircraft ID"
-                android:textColor="#04080F"
-                android:textSize="16sp"
-                app:layout_constraintDimensionRatio="6"
-                app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/aircraft_type_text2" />
-
-            <TextView
-                android:id="@+id/arrival_text4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:paddingTop="0dp"
-                android:paddingBottom="0dp"
-                android:text="Arrival"
-                android:textColor="#04080F"
-                android:textSize="16sp"
-                app:layout_constraintDimensionRatio="6"
-                app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/aircraft_id_text3" />
-
-            <TextView
-                android:id="@+id/destination_text5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:paddingTop="0dp"
-                android:paddingBottom="0dp"
-                android:text="Destination"
-                android:textColor="#04080F"
-                android:textSize="16sp"
-                app:layout_constraintDimensionRatio="6"
-                app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/arrival_text4" />
+                app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
             <TextView
                 android:id="@+id/landings_text6"
@@ -145,10 +84,25 @@
                 app:layout_constraintTop_toBottomOf="@+id/destination_text5" />
 
             <TextView
+                android:id="@+id/dutyonboard_text11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:text="Duty on board"
+                android:textColor="#04080F"
+                android:textSize="16sp"
+                app:layout_constraintDimensionRatio="6"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline10" />
+
+            <TextView
                 android:id="@+id/typeofflight_text7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 android:text="Type of Flight"
@@ -157,22 +111,22 @@
                 app:layout_constraintDimensionRatio="6"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/landings_text6" />
+                app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
             <TextView
-                android:id="@+id/timeofflight_text8"
+                android:id="@+id/destination_text5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp"
-                android:text="Flight Duration"
+                android:text="Destination"
                 android:textColor="#04080F"
                 android:textSize="16sp"
                 app:layout_constraintDimensionRatio="6"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/typeofflight_text7" />
+                app:layout_constraintTop_toBottomOf="@+id/arrival_text4" />
 
             <TextView
                 android:id="@+id/lightconditions_text9"
@@ -187,7 +141,37 @@
                 app:layout_constraintDimensionRatio="6"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/timeofflight_text8" />
+                app:layout_constraintTop_toTopOf="@+id/guideline8" />
+
+            <TextView
+                android:id="@+id/arrival_text4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:text="Arrival"
+                android:textColor="#04080F"
+                android:textSize="16sp"
+                app:layout_constraintDimensionRatio="6"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/aircraft_id_text3" />
+
+            <TextView
+                android:id="@+id/timeofflight_text8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:text="Flight Duration"
+                android:textColor="#04080F"
+                android:textSize="16sp"
+                app:layout_constraintDimensionRatio="6"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date_text" />
 
             <TextView
                 android:id="@+id/flightrunes_text10"
@@ -200,29 +184,27 @@
                 app:layout_constraintDimensionRatio="6"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lightconditions_text9" />
+                app:layout_constraintTop_toTopOf="@+id/guideline9" />
+
 
             <TextView
-                android:id="@+id/dutyonboard_text11"
+                android:id="@+id/aircraft_id_text3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:paddingTop="0dp"
-                android:paddingBottom="0dp"
-                android:text="Duty on board"
+                android:text="Aircraft ID"
                 android:textColor="#04080F"
                 android:textSize="16sp"
                 app:layout_constraintDimensionRatio="6"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/flightrunes_text10" />
-
+                app:layout_constraintTop_toTopOf="@+id/guideline11" />
 
             <Button
                 android:id="@+id/datePicker"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_marginTop="52dp"
+                android:layout_marginTop="44dp"
                 android:onClick="showPickerDialog"
                 android:padding="3dp"
                 android:text="   /    /"
@@ -234,6 +216,20 @@
                 app:layout_constraintTop_toBottomOf="@+id/Registration_title"
                 tools:visibility="visible" />
 
+
+            <Spinner
+                android:id="@+id/aircraft_type_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:spinnerMode="dropdown"
+                android:textAlignment="textStart"
+                app:layout_constraintDimensionRatio="8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.538"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="@+id/guideline5"
+                app:layout_constraintWidth_min="128dp" />
 
             <EditText
                 android:id="@+id/aircraft_id_input"
@@ -247,11 +243,12 @@
                 android:paddingBottom="0dp"
                 android:text=""
                 android:textAlignment="center"
+                android:textColor="#B3E5FC"
                 android:textSize="16sp"
                 app:layout_constraintDimensionRatio="7"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toBottomOf="@+id/aircraft_type_spinner" />
+                app:layout_constraintTop_toTopOf="@+id/guideline11" />
 
             <EditText
                 android:id="@+id/landings_input"
@@ -265,12 +262,98 @@
                 android:paddingBottom="0dp"
                 android:text=""
                 android:textAlignment="center"
+                android:textColor="#B3E5FC"
                 android:textSize="16sp"
                 app:layout_constraintDimensionRatio="7"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/destinationInput" />
 
+            <Button
+                android:id="@+id/timePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="7dp"
+                android:onClick="showPickerDialog"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:text="   :"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                app:layout_constraintDimensionRatio="5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.504"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/datePicker"
+                tools:visibility="visible" />
+
+            <Spinner
+                android:id="@+id/type_of_flight_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:spinnerMode="dropdown"
+                android:textAlignment="textStart"
+                app:layout_constraintDimensionRatio="8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="@+id/guideline6" />
+
+            <Button
+                android:id="@+id/registerButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="Register"
+                android:textColor="#B3E5FC"
+                android:textSize="14sp"
+                app:cornerRadius="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.521"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline7" />
+
+            <Spinner
+                android:id="@+id/flight_rules_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:spinnerMode="dropdown"
+                android:textAlignment="textStart"
+                app:layout_constraintDimensionRatio="8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="@+id/guideline9"
+                app:layout_constraintWidth_min="128dp" />
+
+            <Spinner
+                android:id="@+id/duty_on_board_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:spinnerMode="dropdown"
+                android:textAlignment="textStart"
+                app:layout_constraintDimensionRatio="8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="@+id/guideline10"
+                app:layout_constraintWidth_min="128dp" />
+
+            <Spinner
+                android:id="@+id/light_conditions_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:spinnerMode="dropdown"
+                android:textAlignment="textStart"
+                app:layout_constraintDimensionRatio="8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="@+id/guideline8"
+                app:layout_constraintWidth_min="128dp" />
 
             <EditText
                 android:id="@+id/destinationInput"
@@ -283,6 +366,7 @@
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 android:textAlignment="center"
+                android:textColor="#B3E5FC"
                 android:textSize="16sp"
                 app:layout_constraintDimensionRatio="7"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -293,99 +377,19 @@
                 android:id="@+id/arrivalInput"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/border"
                 android:ems="10"
                 android:inputType="textPersonName|textCapCharacters"
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 android:textAlignment="center"
+                android:textColor="#B3E5FC"
                 android:textSize="16sp"
                 app:layout_constraintDimensionRatio="7"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/aircraft_id_input" />
-
-
-            <Spinner
-                android:id="@+id/aircraft_type_spinner"
-                android:layout_width="0dp"
-                android:layout_height="19dp"
-                android:layout_marginTop="11dp"
-                android:spinnerMode="dropdown"
-                android:textAlignment="textStart"
-                app:layout_constraintDimensionRatio="8"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toBottomOf="@+id/datePicker"
-                app:layout_constraintWidth_min="128dp" />
-
-            <Spinner
-                android:id="@+id/type_of_flight_spinner"
-                android:layout_width="0dp"
-                android:layout_height="19dp"
-                android:layout_marginTop="34dp"
-                android:spinnerMode="dropdown"
-                android:textAlignment="textStart"
-                app:layout_constraintDimensionRatio="8"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toBottomOf="@+id/landings_input" />
-
-            <Spinner
-                android:id="@+id/light_conditions_spinner"
-                android:layout_width="0dp"
-                android:layout_height="19dp"
-                android:layout_marginTop="8dp"
-                android:spinnerMode="dropdown"
-                android:textAlignment="textStart"
-                app:layout_constraintDimensionRatio="8"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toBottomOf="@+id/timePicker"
-                app:layout_constraintWidth_min="128dp" />
-
-            <Spinner
-                android:id="@+id/flight_rules_spinner"
-                android:layout_width="0dp"
-                android:layout_height="19dp"
-                android:layout_marginTop="18dp"
-                android:spinnerMode="dropdown"
-                android:textAlignment="textStart"
-                app:layout_constraintDimensionRatio="8"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toBottomOf="@+id/light_conditions_spinner"
-                app:layout_constraintWidth_min="128dp" />
-
-            <Spinner
-                android:id="@+id/duty_on_board_spinner"
-                android:layout_width="0dp"
-                android:layout_height="19dp"
-                android:layout_marginTop="19dp"
-                android:spinnerMode="dropdown"
-                android:textAlignment="textStart"
-                app:layout_constraintDimensionRatio="8"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toBottomOf="@+id/flight_rules_spinner"
-                app:layout_constraintWidth_min="128dp" />
-
-            <Button
-                android:id="@+id/registerButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="32dp"
-                android:text="Register"
-                android:textColor="#B3E5FC"
-                android:textSize="14sp"
-                app:cornerRadius="10dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/duty_on_board_spinner" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline2"
@@ -393,6 +397,55 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="215dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="406dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="575dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="446dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="486dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="526dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="255dp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

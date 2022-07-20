@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LogTracker">
         <activity
+            android:name=".showTotalHoursActivity"
+            android:exported="false" />
+        <activity
             android:name=".showSearchActivity"
             android:exported="false" />
         <activity

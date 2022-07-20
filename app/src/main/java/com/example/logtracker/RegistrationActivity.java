@@ -51,19 +51,19 @@ Spinner type_of_aircraftSpinner,type_of_flightSpinner,light_condSpinner,flight_r
 
         // Create an ArrayAdapter using the string array and a default spinner layout for ALL Spinners
         ArrayAdapter<CharSequence> type_of_aircraftadapter = ArrayAdapter.createFromResource(this,
-                R.array.Aircraft_types, android.R.layout.simple_spinner_item); //Aircraft_types is in res/values/strings.xml
+                R.array.Aircraft_types, R.layout.spinner_item); //Aircraft_types is in res/values/strings.xml
 
         ArrayAdapter<CharSequence> type_of_flightadapter = ArrayAdapter.createFromResource(this,
-                R.array.Flight_types, android.R.layout.simple_spinner_item);
+                R.array.Flight_types, R.layout.spinner_item);
 
         ArrayAdapter<CharSequence> light_condadapter = ArrayAdapter.createFromResource(this,
-                R.array.Light_Conditions, android.R.layout.simple_spinner_item);
+                R.array.Light_Conditions, R.layout.spinner_item);
 
         ArrayAdapter<CharSequence> flight_rulesadapter = ArrayAdapter.createFromResource(this,
-                R.array.Flight_rules, android.R.layout.simple_spinner_item);
+                R.array.Flight_rules, R.layout.spinner_item);
 
         ArrayAdapter<CharSequence> duty_on_boardadapter = ArrayAdapter.createFromResource(this,
-                R.array.Duty_on_Board, android.R.layout.simple_spinner_item);
+                R.array.Duty_on_Board, R.layout.spinner_item);
 
         // Specify the layout to use when the list of choices appears
         type_of_aircraftadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

@@ -1,38 +1,28 @@
-package com.example.logtracker;
+package com.example.logtracker.basicActivities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import com.example.logtracker.LogtrackerDBHandler;
+import com.example.logtracker.R;
+import com.example.logtracker.showTotalHoursActivity;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Currency;
 import java.util.HashMap;
-import java.util.jar.Attributes;
 
 public class PreferencesActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     public static Button SaveBtn, ResetStartingHours, DisplayTotalHours, ResetDB, ExportDB;
@@ -81,10 +71,7 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
         SaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 //store name mail and hours
-
                 String hours1 = startingHours.getText().toString();
                 boolean isInserted = flightsDBprefs.addStartingHours(aircraft,hours1);
                 if (isInserted) {
@@ -92,7 +79,7 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
                     aircraftSpinner.setSelection(0);
                     startingHours.setText("");
                 } else
-                    Toast.makeText(PreferencesActivity.this, "Starting hours already registered for this type", Toast.LENGTH_LONG).show();
+                    Toast.makeText(PreferencesActivity.this, "Type already registered or \n a field is missing", Toast.LENGTH_LONG).show();
 
             }
         });

@@ -109,6 +109,14 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
 
     }
 
+    public void deleteFlight(String index){
+        SQLiteDatabase db = this.getWritableDatabase(); //opens the database
+        String DELETE_FLIGHT = "DELETE FROM "+TABLE_FLIGHTS+ " WHERE "+ COLUMN_ID +" = "+index;
+        System.out.println(DELETE_FLIGHT);
+        db.execSQL(DELETE_FLIGHT);
+    }
+
+
     public void resetDB(){
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_FLIGHTS);
@@ -292,6 +300,10 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
     }
 
     public boolean addStartingHours(String type , String duration ) {
+        if (type == null || duration.equals("")){
+            return false;
+        }
+        System.out.println("Type:"+type);
         SQLiteDatabase db = this.getWritableDatabase(); //opens the database
         String query= "SELECT "+ COLUMN_AIRCRAFTTYPE +" FROM " + TABLE_HOURS ;
         Cursor cursor = db.rawQuery(query, null);

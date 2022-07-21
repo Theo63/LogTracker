@@ -1,4 +1,4 @@
-package com.example.logtracker;
+package com.example.logtracker.basicActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -12,6 +12,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
 import android.view.View;
+
+import com.example.logtracker.R;
+import com.example.logtracker.RegistrationActivity;
 
 public class MainActivity extends AppCompatActivity {
 

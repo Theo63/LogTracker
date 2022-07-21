@@ -11,7 +11,7 @@
         android:id="@+id/LogTracker"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".basicActivities.MainActivity">
 
         <TextView
             android:id="@+id/textView"

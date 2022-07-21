@@ -13,17 +13,25 @@ import java.util.ArrayList;
 public class flightRVAdapter extends RecyclerView.Adapter<flightRVAdapter.ViewHolder> {
 
    private ArrayList<ArrayList> flightResults;
+   private OnDeleteListener mOnDeleteListener;
 
-   public flightRVAdapter(ArrayList<ArrayList> flightres){
-        flightResults = flightres;
+   //constructor
+   public flightRVAdapter(ArrayList<ArrayList> flightres, OnDeleteListener onDeleteListener){
+       flightResults = flightres;
+       this.mOnDeleteListener = onDeleteListener;
+
    }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView date, fromLoc, toLoc, typeofaft, aftid, typeofflight, flightdur, lightCont, flightrules,dutyonBoard;
 
-        public ViewHolder(@NonNull View itemView) {
+        OnDeleteListener onDeleteListener;
+
+        public ViewHolder(@NonNull View itemView, OnDeleteListener onDeleteListener) {
             super(itemView);
+            this.onDeleteListener=onDeleteListener;
 
             date = itemView.findViewById(R.id.typetextView);
             fromLoc = itemView.findViewById(R.id.fromLoctextView);
@@ -35,9 +43,15 @@ public class flightRVAdapter extends RecyclerView.Adapter<flightRVAdapter.ViewHo
             lightCont = itemView.findViewById(R.id.lightConttextView);
             flightrules = itemView.findViewById(R.id.flightRulestextView);
             dutyonBoard = itemView.findViewById(R.id.dutyOnBoardtextView);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            onDeleteListener.onDeleteClick(getAdapterPosition());
         }
     }
-
 
 
 
@@ -45,7 +59,7 @@ public class flightRVAdapter extends RecyclerView.Adapter<flightRVAdapter.ViewHo
     @Override
     public flightRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.flight_row_layout,parent,false);
-        return new ViewHolder(v);
+        return new ViewHolder(v, mOnDeleteListener);
     }
 
     @Override
@@ -67,5 +81,9 @@ public class flightRVAdapter extends RecyclerView.Adapter<flightRVAdapter.ViewHo
     @Override
     public int getItemCount() {
         return flightResults.size();
+    }
+
+    public interface OnDeleteListener{
+       void onDeleteClick(int position);
     }
 }

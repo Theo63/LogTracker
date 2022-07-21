@@ -1,4 +1,4 @@
-package com.example.logtracker;
+package com.example.logtracker.basicActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,9 +11,11 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
+import com.example.logtracker.DatePickerFragment;
+import com.example.logtracker.LogtrackerDBHandler;
+import com.example.logtracker.R;
+import com.example.logtracker.showSearchActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -89,7 +91,6 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
                 Intent intentShow = new Intent(SearchActivity.this, showSearchActivity.class );
                 intentShow.putExtra("search values", flightResults);
                 startActivity(intentShow);
-
                 finish();
 
             }

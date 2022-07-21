@@ -96,33 +96,12 @@ Spinner type_of_aircraftSpinner,type_of_flightSpinner,light_condSpinner,flight_r
                     getInputValues();
                     boolean dataCompletion = flightLog.fieldCompletion();
                     if (dataCompletion) {
-                                    // setting a warning dialog before resetting the database
-                                    AlertDialog alertDialog = new AlertDialog.Builder(RegistrationActivity.this).create();
-                                    alertDialog.setTitle("Logbook Warning");
-                                    alertDialog.setMessage("Writting to logbook cannot be undone. Have you checked your flight data?");
-                                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
-                                            new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialogInterface, int i) {
-
-                                                    boolean isInserted = flightsDB.addFlight();
-                                                    if (isInserted) {
-                                                        Toast.makeText(RegistrationActivity.this, "Flight Registered successfully", Toast.LENGTH_LONG).show();
-                                                        resetActivity();
-                                                    } else
-                                                        Toast.makeText(RegistrationActivity.this, "Error in Flight RegistrationActivity", Toast.LENGTH_LONG).show();
-                                                }
-                                            });
-                                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE,"No",
-                                                        new DialogInterface.OnClickListener()
-                                                {
-                                                    @Override
-                                                    public void onClick (DialogInterface
-                                                    dialogInterface,int i){
-                                                    alertDialog.dismiss();
-                                                }
-                                                });
-                                    alertDialog.show();
+                        boolean isInserted = flightsDB.addFlight();
+                        if (isInserted) {
+                            Toast.makeText(RegistrationActivity.this, "Flight Registered successfully", Toast.LENGTH_LONG).show();
+                            resetActivity();
+                        } else
+                            Toast.makeText(RegistrationActivity.this, "Error in Flight RegistrationActivity", Toast.LENGTH_LONG).show();
 
                     }else {
                         Toast.makeText(RegistrationActivity.this, "Please fill all the fields", Toast.LENGTH_LONG).show();

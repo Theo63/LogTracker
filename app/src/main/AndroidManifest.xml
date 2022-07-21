@@ -29,16 +29,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SearchActivity"
+            android:name=".basicActivities.SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".PreferencesActivity"
+            android:name=".basicActivities.PreferencesActivity"
             android:exported="false" />
         <activity
             android:name=".RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".basicActivities.MainActivity"
             android:exported="false" />
     </application>
 

@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.logtracker.basicActivities.PreferencesActivity;
@@ -20,6 +21,9 @@ import java.util.ArrayList;
 public class showSearchActivity extends AppCompatActivity implements flightRVAdapter.OnDeleteListener {
     ArrayList<ArrayList> flightResults;
     LogtrackerDBHandler flightsDB;
+    private String sumHours = "";
+
+    TextView sumHoursText;
 
     RecyclerView rvList;
     RecyclerView.Adapter myAdapter;
@@ -35,6 +39,16 @@ public class showSearchActivity extends AppCompatActivity implements flightRVAda
         flightResults = (ArrayList) getIntent().getSerializableExtra("search values");
         flightsDB = new LogtrackerDBHandler(this); //creates db obj
 
+        ///get total hours which is last item and remove it
+        ArrayList<String> temp = new ArrayList<>();
+        temp = flightResults.get(flightResults.size()-1);
+        flightResults.remove(flightResults.size()-1);
+        sumHours = temp.get(0);
+        /////////////////////
+        sumHoursText = (TextView) findViewById(R.id.hoursTextView);
+        sumHoursText.setText("Total hours for your selection:  "+sumHours);
+
+
 
         //sets the Recyvler View to the activity
         rvList = findViewById(R.id.rvList);
@@ -47,9 +61,6 @@ public class showSearchActivity extends AppCompatActivity implements flightRVAda
         ///we sent the results to the the adapter
         myAdapter = new flightRVAdapter(flightResults, this);
         rvList.setAdapter(myAdapter);
-
-
-
     }
 
     @Override

@@ -13,12 +13,16 @@ import java.util.ArrayList;
 public class flightRVAdapter extends RecyclerView.Adapter<flightRVAdapter.ViewHolder> {
 
    private ArrayList<ArrayList> flightResults;
+
    private OnDeleteListener mOnDeleteListener;
+
 
    //constructor
    public flightRVAdapter(ArrayList<ArrayList> flightres, OnDeleteListener onDeleteListener){
+
        flightResults = flightres;
        this.mOnDeleteListener = onDeleteListener;
+
 
    }
 

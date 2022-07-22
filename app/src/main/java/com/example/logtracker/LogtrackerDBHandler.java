@@ -276,15 +276,20 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
         }
         else
             query=query+" ORDER BY "+COLUMN_DATE+" ASC "+";"; //we add last ; to query
-        System.out.println(query);
+        //System.out.println(query);
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
 
+        int sumHours = 0;
         if (cursor.moveToFirst()) {
             int i = 1;
             do {
                 for (int j = 0; j < 12; j++) {
                     flightData.add(cursor.getString(j));
+                    if (j == 8){// get sum of hours
+                        String[] durationOfSelection  = cursor.getString(j).split(":");
+                        sumHours += ((Integer.parseInt(durationOfSelection[0])*60) + Integer.parseInt(durationOfSelection[1]));
+                    }
                 }
                 i++;
                 finalData.add(flightData);
@@ -293,6 +298,10 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
 
         }
         db.close();//close database
+        String hoursSum = Integer.toString(sumHours/60) +" : "+ Integer.toString(sumHours%60);
+        flightData = new ArrayList<>();
+        flightData.add(hoursSum);//last array list total hours
+        finalData.add(flightData);
         return finalData;
 
     }

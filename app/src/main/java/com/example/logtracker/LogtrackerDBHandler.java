@@ -254,7 +254,6 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
                 and=" AND ";
                 allQuery = false;
             }
-
         }
         if (searchData.containsKey("fromLocation")){
             String temp = (String) searchData.get("fromLocation");
@@ -271,13 +270,12 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
                 and=" AND ";
                 allQuery = false;
             }
-
         }
         if (allQuery){ //if everything is blank we get the user everything
-            query = "SELECT * FROM " + TABLE_FLIGHTS + ";";
+            query = "SELECT * FROM " + TABLE_FLIGHTS + " ORDER BY "+COLUMN_DATE+" ASC "+";";
         }
         else
-            query=query+";"; //we add last ; to query
+            query=query+" ORDER BY "+COLUMN_DATE+" ASC "+";"; //we add last ; to query
         System.out.println(query);
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
@@ -351,7 +349,7 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
                 } while (cursor2.moveToNext());
             }
             types.put(key,types.get(key)*60+sum);
-            System.out.println("type: "+key+" total hours "+ types.get(key)/60+" hours and "+types.get(key)%60+" minutes ");
+            //System.out.println("type: "+key+" total hours "+ types.get(key)/60+" Ηours : "+types.get(key)%60+" Μinutes ");
 
 
         }

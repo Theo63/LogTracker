@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.logtracker.LogtrackerDBHandler;
 import com.example.logtracker.R;
 import com.example.logtracker.showTotalHoursActivity;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,8 +49,8 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
         sharedpreferences = PreferenceManager.getDefaultSharedPreferences(this);
         hoursArrayList = new ArrayList<>();
         typeHoursList = new ArrayList<>();
-
         aircraftSpinner = (Spinner) findViewById(R.id.aircraft_pref_spinner1);
+
 
         // Create an ArrayAdapter using the string array and a default spinner layout for ALL Spinners
         ArrayAdapter<CharSequence> aircraft_adapter = ArrayAdapter.createFromResource(this,
@@ -75,11 +76,17 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
                 String hours1 = startingHours.getText().toString();
                 boolean isInserted = flightsDBprefs.addStartingHours(aircraft,hours1);
                 if (isInserted) {
-                    Toast.makeText(PreferencesActivity.this, " Your starting hours info is now stored", Toast.LENGTH_LONG).show();
+                    Snackbar successSnack = Snackbar.make(findViewById(R.id.preferences_layout),
+                            "Your starting hours info is now stored", 1200);
+                    successSnack.show();
                     aircraftSpinner.setSelection(0);
                     startingHours.setText("");
-                } else
-                    Toast.makeText(PreferencesActivity.this, "Type already registered or \n a field is missing", Toast.LENGTH_LONG).show();
+                } else {
+                    Snackbar missingfieldsSnack = Snackbar.make(findViewById(R.id.preferences_layout),
+                            "Type already registered or a field is missing", 1200);
+                    missingfieldsSnack.show();
+                }
+
 
             }
         });
@@ -98,7 +105,9 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 flightsDBprefs.resetStartingHoursTable(); // database reset after pressing ok
-                                Toast.makeText(PreferencesActivity.this,"Starting Hours Cleared",Toast.LENGTH_LONG).show();
+                                Snackbar clearedSnack = Snackbar.make(findViewById(R.id.preferences_layout),
+                                        "Starting Hours Cleared", 1200);
+                                clearedSnack.show();
                             }
                         });
                 alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel",
@@ -120,7 +129,7 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
                 for(String key: totalHours.keySet()) {
                     typeHoursList.add(key);
                     String hours = "";
-                    hours = totalHours.get(key)/60+" hours and "+totalHours.get(key)%60+" minutes ";
+                    hours = totalHours.get(key)/60+" Ηours and "+totalHours.get(key)%60+" Μinutes ";
                     typeHoursList.add(hours);
                     hoursArrayList.add(typeHoursList);
                     typeHoursList = new ArrayList<>();
@@ -155,7 +164,9 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 flightsDBprefs.resetDB(); // database reset after pressing ok
-                                Toast.makeText(PreferencesActivity.this,"Database is now empty",Toast.LENGTH_LONG).show();
+                                Snackbar dbemptySnack = Snackbar.make(findViewById(R.id.preferences_layout),
+                                        "Database is now empty", 1500);
+                                dbemptySnack.show();
                             }
                         });
                 alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel",
@@ -175,7 +186,9 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
             public void onClick(View view) {
 
                 String path=flightsDBprefs.writeFlightsToExcel();
-                Toast.makeText(PreferencesActivity.this,"FLights.xls is in your internal storage home directory" ,Toast.LENGTH_LONG).show();
+                Snackbar exportExcelSnack = Snackbar.make(findViewById(R.id.preferences_layout),
+                        "FLights.xls is in your internal storage home directory", 1500);
+                exportExcelSnack.show();
             }
         });
     }

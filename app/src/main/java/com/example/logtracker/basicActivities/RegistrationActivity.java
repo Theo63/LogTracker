@@ -1,9 +1,7 @@
-package com.example.logtracker;
+package com.example.logtracker.basicActivities;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +12,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.logtracker.DatePickerFragment;
+import com.example.logtracker.LogtrackerDBHandler;
+import com.example.logtracker.R;
+import com.example.logtracker.TimePickerFragment;
+import com.example.logtracker.flightLog;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -40,8 +43,12 @@ Spinner type_of_aircraftSpinner,type_of_flightSpinner,light_condSpinner,flight_r
         DateBtn = (Button) findViewById(R.id.datePicker);
         TimeBtn = (Button) findViewById(R.id.timePicker);
         RegisterBtn = (Button) findViewById(R.id.registerButton);
+        Snackbar missingfieldsSnack = Snackbar.make(findViewById(R.id.registrationLayout),
+                "Please fill all the fields", 1200);
+        Snackbar successSnack = Snackbar.make(findViewById(R.id.registrationLayout),
+                "Flight Registered successfully", 1200);
         Snackbar errorSnack = Snackbar.make(findViewById(R.id.registrationLayout),
-                "Please fill all the fields", 1500);
+                "Error in Flight RegistrationActivity", 1200);
 
         type_of_aircraftSpinner = (Spinner) findViewById(R.id.aircraft_type_spinner);
         type_of_flightSpinner = (Spinner) findViewById(R.id.type_of_flight_spinner);
@@ -98,17 +105,17 @@ Spinner type_of_aircraftSpinner,type_of_flightSpinner,light_condSpinner,flight_r
                     if (dataCompletion) {
                         boolean isInserted = flightsDB.addFlight();
                         if (isInserted) {
-                            Toast.makeText(RegistrationActivity.this, "Flight Registered successfully", Toast.LENGTH_LONG).show();
+                            successSnack.show();
                             resetActivity();
                         } else
-                            Toast.makeText(RegistrationActivity.this, "Error in Flight RegistrationActivity", Toast.LENGTH_LONG).show();
+                            errorSnack.show();
 
                     }else {
-                        Toast.makeText(RegistrationActivity.this, "Please fill all the fields", Toast.LENGTH_LONG).show();
+                        missingfieldsSnack.show();
                     }
 
                 } catch (Exception e) {
-                    errorSnack.show();
+                    missingfieldsSnack.show();
                 }
 
             }

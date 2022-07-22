@@ -35,7 +35,7 @@
             android:name=".basicActivities.PreferencesActivity"
             android:exported="false" />
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".basicActivities.RegistrationActivity"
             android:exported="false" />
         <activity
             android:name=".basicActivities.MainActivity"

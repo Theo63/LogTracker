@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.logtracker.basicActivities.PreferencesActivity;
 import com.example.logtracker.basicActivities.SearchActivity;
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 
 public class showSearchActivity extends AppCompatActivity implements flightRVAdapter.OnDeleteListener {
@@ -71,7 +73,9 @@ public class showSearchActivity extends AppCompatActivity implements flightRVAda
                         flightsDB.deleteFlight(flightResults.get(position).get(0).toString());//delete from database
                         flightResults.remove(position);
                         myAdapter.notifyItemRemoved(position);
-                        Toast.makeText(showSearchActivity.this,"Flight successfully deleted",Toast.LENGTH_SHORT).show();
+                        Snackbar successfully_deletedSnack = Snackbar.make(findViewById(R.id.showFlightsLayout),
+                                "Flight successfully deleted", 1200);
+                        successfully_deletedSnack.show();
                     }
                 });
         alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",

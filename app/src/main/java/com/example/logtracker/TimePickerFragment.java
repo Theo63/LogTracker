@@ -8,6 +8,8 @@ import android.widget.TimePicker;
 
 import androidx.fragment.app.DialogFragment;
 
+import com.example.logtracker.basicActivities.RegistrationActivity;
+
 import java.util.ArrayList;
 
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
@@ -26,7 +28,7 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         time.add(0,hourOfDay);
         time.add(1,minute);
         System.out.println("the flight time picked is : "+ hourOfDay+ " : "+minute);
-        com.example.logtracker.RegistrationActivity.setTimeButton(time);
+        RegistrationActivity.setTimeButton(time);
 
     }
 

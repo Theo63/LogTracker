@@ -14,7 +14,6 @@ import android.provider.Settings;
 import android.view.View;
 
 import com.example.logtracker.R;
-import com.example.logtracker.RegistrationActivity;
 
 public class MainActivity extends AppCompatActivity {
 

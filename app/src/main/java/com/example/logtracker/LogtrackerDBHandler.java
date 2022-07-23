@@ -9,13 +9,17 @@ import android.os.Environment;
 
 import androidx.annotation.Nullable;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -360,6 +364,62 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
         return types;
         //Cursor cursor = db.rawQuery(query, null);
     }
+
+
+    public boolean exportDatabase(){
+        try
+        {
+            File sd = Environment.getExternalStorageDirectory();
+            File data = Environment.getDataDirectory();
+
+            String currentDBPath = "//data//com.example.logtracker//databases//flightsDB.db";
+            String backupDBPath = "flightsDB.db";
+            File currentDB = new File(data, currentDBPath);
+            File backupDB = new File(sd, backupDBPath);
+
+            FileChannel src = new FileInputStream(currentDB).getChannel();
+            FileChannel dst = new FileOutputStream(backupDB).getChannel();
+            dst.transferFrom(src, 0, src.size());
+            src.close();
+            dst.close();
+            return true;
+
+        }
+        catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean importDatabase(){
+        try
+        {
+            File sd = Environment.getExternalStorageDirectory();
+            File data = Environment.getDataDirectory();
+
+            String currentDBPath = "//data//" + "com.example.logtracker" + "//databases//" + "flightsDB.db";
+            String backupDBPath = "flightsDB.db";
+            File backupDB = new File(data, currentDBPath);
+            File currentDB = new File(sd, backupDBPath);
+
+            FileChannel src = new FileInputStream(currentDB).getChannel();
+            FileChannel dst = new FileOutputStream(backupDB).getChannel();
+            dst.transferFrom(src, 0, src.size());
+            src.close();
+            dst.close();
+            return true;
+
+        }
+        catch (Exception e) {
+            return false;
+        }
+    }
+
+
+
+
+
+
+
 
     private int getDurationMinutes(String time){
         String[] durationOfSelection  = time.split(":");

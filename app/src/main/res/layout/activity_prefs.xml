@@ -30,8 +30,9 @@
             android:layout_marginTop="32dp"
             android:text="Display\n Total Hours"
             android:textColor="#B3E5FC"
-            app:layout_constraintEnd_toStartOf="@+id/resetStrartingHours"
-            app:layout_constraintStart_toEndOf="@+id/Save_prefs_Button"
+            app:flow_horizontalAlign="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/aircraft_pref_spinner1"
             app:strokeColor="#EDDD8A" />
 
@@ -40,10 +41,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
             android:text="Reset"
             android:textColor="#B3E5FC"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/displayTotalHours"
             app:layout_constraintTop_toBottomOf="@+id/aircraft_pref_spinner1"
             app:strokeColor="#EDDD8A" />
 
@@ -108,10 +109,10 @@
             android:id="@+id/Save_prefs_Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:text="Save"
             android:textColor="#B3E5FC"
+            app:layout_constraintEnd_toStartOf="@+id/displayTotalHours"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/aircraft_pref_spinner1"
             app:strokeColor="#EDDD8A" />
@@ -127,17 +128,40 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/DB_exportToExcelButton" />
+
+        <Button
+            android:id="@+id/DB_exportToExcelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Export flights to excel"
+            android:textColor="#B3E5FC"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/DB_exportButton" />
 
         <Button
             android:id="@+id/DB_exportButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="64dp"
-            android:text="Export Database"
+            android:layout_marginTop="32dp"
+            android:text="Backup flights"
+            android:textColor="#B3E5FC"
+            app:layout_constraintEnd_toStartOf="@+id/guideline13"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/displayTotalHours" />
+
+        <Button
+            android:id="@+id/DB_importButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Import flights"
             android:textColor="#B3E5FC"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline13"
             app:layout_constraintTop_toBottomOf="@+id/displayTotalHours" />
 
         <TextView
@@ -172,6 +196,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_begin="109dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_begin="205dp"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

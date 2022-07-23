@@ -15,7 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.logtracker.LogtrackerDBHandler;
 import com.example.logtracker.R;
@@ -26,7 +25,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PreferencesActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    public static Button SaveBtn, ResetStartingHours, DisplayTotalHours, ResetDB, ExportDB;
+    public static Button SaveBtn, ResetStartingHours, DisplayTotalHours, ResetDB, ExportDB, BackupDB, ImportDB;
     EditText startingHours;
     Spinner aircraftSpinner;
     String aircraft;
@@ -180,7 +179,7 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
             }
         });
 
-        ExportDB = (Button) findViewById(R.id.DB_exportButton);
+        ExportDB = (Button) findViewById(R.id.DB_exportToExcelButton);
         ExportDB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -191,6 +190,48 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
                 exportExcelSnack.show();
             }
         });
+
+        BackupDB =  (Button) findViewById(R.id.DB_exportButton);
+        BackupDB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean backupStatus = flightsDBprefs.exportDatabase();
+                Snackbar backupSnack;
+                if (backupStatus){
+                    backupSnack = Snackbar.make(findViewById(R.id.preferences_layout),
+                            "Your backup file is in your internal storage home directory", 1500);
+                }
+                else {
+                    backupSnack = Snackbar.make(findViewById(R.id.preferences_layout),
+                            "Backup could not be completed", 1500);
+                }
+                backupSnack.show();
+            }
+        });
+
+
+
+
+        ImportDB = (Button) findViewById(R.id.DB_importButton);
+        ImportDB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean importStatus = flightsDBprefs.importDatabase();
+                Snackbar importSnack;
+                if (importStatus){
+                    importSnack = Snackbar.make(findViewById(R.id.preferences_layout),
+                            "Import Completed Successfully", 1500);
+                }
+                else {
+                    importSnack = Snackbar.make(findViewById(R.id.preferences_layout),
+                            "Import could not be completed. Please make sure that your backup file is in your home directory", 1500);
+                }
+                importSnack.show();
+            }
+        });
+
+
+
     }
 
 

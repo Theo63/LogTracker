@@ -234,8 +234,6 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
 
     }
 
-
-
     //////spinners ////////////////
     @Override
     public void onItemSelected(AdapterView<?> parent, View view,

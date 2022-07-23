@@ -45,13 +45,14 @@
                 <TextView
                     android:id="@+id/totalHoursTextView"
                     android:layout_width="match_parent"
-                    android:layout_height="32dp"
+                    android:layout_height="wrap_content"
                     android:paddingTop="6dp"
                     android:paddingEnd="4dp"
                     android:paddingRight="4dp"
                     android:paddingBottom="6dp"
                     android:text="hoursTextView"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
 
             </LinearLayout>
         </LinearLayout>

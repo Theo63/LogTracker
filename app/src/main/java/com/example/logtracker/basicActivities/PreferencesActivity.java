@@ -128,7 +128,7 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
                 for(String key: totalHours.keySet()) {
                     typeHoursList.add(key);
                     String hours = "";
-                    hours = totalHours.get(key)/60+" Ηours and "+totalHours.get(key)%60+" Μinutes ";
+                    hours = totalHours.get(key)/60+" Ηours : "+totalHours.get(key)%60+" Μinutes ";
                     typeHoursList.add(hours);
                     hoursArrayList.add(typeHoursList);
                     typeHoursList = new ArrayList<>();

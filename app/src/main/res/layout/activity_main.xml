@@ -69,7 +69,7 @@
             android:backgroundTint="#00FFFFFF"
             android:onClick="preferencesForm"
             android:shadowColor="#00FFFFFF"
-            android:text="Save your Preferences"
+            android:text="Data Management"
             android:textAlignment="center"
             android:textColor="#B3E5FC"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -21,7 +22,8 @@ import java.util.ArrayList;
 public class showSearchActivity extends AppCompatActivity implements flightRVAdapter.OnDeleteListener {
     ArrayList<ArrayList> flightResults;
     LogtrackerDBHandler flightsDB;
-    private String sumHours = "";
+    private int sumHoursInt ;///
+    private String hoursSumStr;
 
     TextView sumHoursText;
 
@@ -39,15 +41,14 @@ public class showSearchActivity extends AppCompatActivity implements flightRVAda
         flightResults = (ArrayList) getIntent().getSerializableExtra("search values");
         flightsDB = new LogtrackerDBHandler(this); //creates db obj
 
-        ///get total hours which is last item and remove it
+        ///get total hours which is last item and remove it and set it to text
         ArrayList<String> temp = new ArrayList<>();
         temp = flightResults.get(flightResults.size()-1);
         flightResults.remove(flightResults.size()-1);
-        sumHours = temp.get(0);
-        /////////////////////
+        sumHoursInt = Integer.parseInt(temp.get(0));///
+        hoursSumStr = Integer.toString(sumHoursInt/60) +" : "+ String.format("%02d", (sumHoursInt % 60) );
         sumHoursText = (TextView) findViewById(R.id.hoursTextView);
-        sumHoursText.setText("Total hours for your selection:  "+sumHours);
-
+        sumHoursText.setText("Your selection total hours:  "+ hoursSumStr);
 
 
         //sets the Recyvler View to the activity
@@ -72,16 +73,20 @@ public class showSearchActivity extends AppCompatActivity implements flightRVAda
     @Override
     public void onDeleteClick(int position) {
         //delete happens here
-        System.out.println("item clicked");
+        //System.out.println("calculated : "+getDurationMinutes(flightResults.get(position).get(8).toString()));
         // setting a warning dialog before resetting the database
         AlertDialog alertDialog = new AlertDialog.Builder(showSearchActivity.this).create();
         alertDialog.setTitle("Flight Deletion");
         alertDialog.setMessage("The flight will be permanently deleted.\n Are you sure ?");
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
                 new DialogInterface.OnClickListener() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         flightsDB.deleteFlight(flightResults.get(position).get(0).toString());//delete from database
+                        String textTotal = getDurationMinutes(flightResults.get(position).get(8).toString());
+                        sumHoursText.setText("Total hours for your selection:  " + textTotal);
+
                         flightResults.remove(position);
                         myAdapter.notifyItemRemoved(position);
                         Snackbar successfully_deletedSnack = Snackbar.make(findViewById(R.id.showFlightsLayout),
@@ -97,6 +102,20 @@ public class showSearchActivity extends AppCompatActivity implements flightRVAda
                     }
                 });
         alertDialog.show();
+    }
+
+    private String getDurationMinutes(String time){
+        String[] durationOfSelection  = time.split(":");
+        int dur = (Integer.parseInt(durationOfSelection[0])*60) + Integer.parseInt(durationOfSelection[1]);
+        int temp = sumHoursInt-dur;
+        hoursSumStr = Integer.toString(temp/60) +" : "+ String.format("%02d", (temp % 60) );
+        sumHoursInt = temp;
+        return hoursSumStr;
+        //old version - replace function with this
+        //String[] durationOfSelection  = cursor.getString(j).split(":");
+        //sumHours += ((Integer.parseInt(durationOfSelection[0])*60) + Integer.parseInt(durationOfSelection[1]));
 
     }
+
+
 }

@@ -287,8 +287,7 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
                 for (int j = 0; j < 12; j++) {
                     flightData.add(cursor.getString(j));
                     if (j == 8){// get sum of hours
-                        String[] durationOfSelection  = cursor.getString(j).split(":");
-                        sumHours += ((Integer.parseInt(durationOfSelection[0])*60) + Integer.parseInt(durationOfSelection[1]));
+                        sumHours += getDurationMinutes(cursor.getString(j));
                     }
                 }
                 i++;
@@ -298,7 +297,7 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
 
         }
         db.close();//close database
-        String hoursSum = Integer.toString(sumHours/60) +" : "+ Integer.toString(sumHours%60);
+        String hoursSum = Integer.toString(sumHours);  ////
         flightData = new ArrayList<>();
         flightData.add(hoursSum);//last array list total hours
         finalData.add(flightData);
@@ -337,7 +336,7 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
         String query= "SELECT * FROM " + TABLE_HOURS ;
         Cursor cursor = db.rawQuery(query, null);
         HashMap<String, Integer> types = new HashMap<>();
-        if (cursor.moveToFirst()) {
+        if (cursor.moveToFirst() && cursor!=null && cursor.getCount()>0) {
             do {
                 types.put(cursor.getString(1),Integer.valueOf(cursor.getString(2)));
                 //System.out.println(types);
@@ -350,11 +349,7 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
             int sum =0;
             if (cursor2.moveToFirst() && cursor!=null && cursor.getCount()>0) {
                 do {
-                    String[] duration  = cursor2.getString(0).split(":");
-                    sum += ((Integer.parseInt(duration[0])*60) + Integer.parseInt(duration[1]));
-                    //cursor2.getString(0);    /// get before and after :
-                    //types.put(cursor.getString(1),Integer.valueOf(cursor.getString(2)));
-
+                    sum += getDurationMinutes(cursor2.getString(0));
                 } while (cursor2.moveToNext());
             }
             types.put(key,types.get(key)*60+sum);
@@ -363,11 +358,16 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
 
         }
         return types;
-        /////left here
-
-
-
         //Cursor cursor = db.rawQuery(query, null);
+    }
+
+    private int getDurationMinutes(String time){
+        String[] durationOfSelection  = time.split(":");
+        return  (Integer.parseInt(durationOfSelection[0])*60) + Integer.parseInt(durationOfSelection[1]);
+        //old version - replace function with this
+        //String[] durationOfSelection  = cursor.getString(j).split(":");
+        //sumHours += ((Integer.parseInt(durationOfSelection[0])*60) + Integer.parseInt(durationOfSelection[1]));
+
     }
 
 

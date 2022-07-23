@@ -216,17 +216,36 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
         ImportDB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                boolean importStatus = flightsDBprefs.importDatabase();
-                Snackbar importSnack;
-                if (importStatus){
-                    importSnack = Snackbar.make(findViewById(R.id.preferences_layout),
-                            "Import Completed Successfully", 1500);
-                }
-                else {
-                    importSnack = Snackbar.make(findViewById(R.id.preferences_layout),
-                            "Import could not be completed. Please make sure that your backup file is in your home directory", 1500);
-                }
-                importSnack.show();
+                // setting a warning dialog before resetting the database
+                AlertDialog alertDialog = new AlertDialog.Builder(PreferencesActivity.this).create();
+                alertDialog.setTitle("Database Overwrite Warning !");
+                alertDialog.setMessage("Your changes to logbook since last backup will be overwritten. Are you sure ?");
+                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                boolean importStatus = flightsDBprefs.importDatabase();
+                                Snackbar importSnack;
+                                if (importStatus){
+                                    importSnack = Snackbar.make(findViewById(R.id.preferences_layout),
+                                            "Import Completed Successfully", 1500);
+                                }
+                                else {
+                                    importSnack = Snackbar.make(findViewById(R.id.preferences_layout),
+                                            "Import could not be completed. Please make sure that your backup file is in your home directory", 1500);
+                                }
+                                importSnack.show();
+                            }
+                        });
+                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                alertDialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
+
             }
         });
 

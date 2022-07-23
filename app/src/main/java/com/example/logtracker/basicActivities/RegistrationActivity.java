@@ -104,7 +104,7 @@ Spinner type_of_aircraftSpinner,type_of_flightSpinner,light_condSpinner,flight_r
                     boolean dataCompletion = flightLog.fieldCompletion();
                     if (dataCompletion) {
                         //fill database with dummy data
-//                        for (int i=0;i<50;i++){
+//                        for (int i=0;i<500;i++){
 //                            boolean isInserted = flightsDB.addFlight();
 //                        }
                         boolean isInserted = flightsDB.addFlight();

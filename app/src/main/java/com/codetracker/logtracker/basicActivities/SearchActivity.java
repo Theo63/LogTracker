@@ -1,4 +1,4 @@
-package com.example.logtracker.basicActivities;
+package com.codetracker.logtracker.basicActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,16 +12,18 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Button;
 
-import com.example.logtracker.DatePickerFragment;
-import com.example.logtracker.LogtrackerDBHandler;
-import com.example.logtracker.R;
-import com.example.logtracker.showSearchActivity;
+
+import com.codetracker.logtracker.CustomDialogClass;
+import com.codetracker.logtracker.DatePickerFragment;
+import com.codetracker.logtracker.LogtrackerDBHandler;
+import com.codetracker.logtracker.R;
+import com.codetracker.logtracker.showSearchActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SearchActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    public static Button dateBtn1, dateBtn2, SearchBtn;
+    public static Button dateBtn1, dateBtn2, SearchBtn, helpButton;
     public EditText aircraftIDText, locationFromText, locationToText;
     public Spinner aircraftTypeSpinner, typeofFlightSpinner, dutyonBoardSpinner;
     public static HashMap<String, String> searchValues;
@@ -41,6 +43,8 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
         dateBtn1 = (Button) findViewById(R.id.dateFromButton);
         dateBtn2 = (Button) findViewById(R.id.dateUntilButton);
         SearchBtn = (Button) findViewById(R.id.searchBtn);
+        helpButton = (Button) findViewById(R.id.helpButton);
+
 
         aircraftTypeSpinner = (Spinner) findViewById(R.id.aircraft_type_spinnerSearch);
         typeofFlightSpinner = (Spinner) findViewById(R.id.type_of_flight_spinnerSearch);
@@ -93,6 +97,15 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
                 startActivity(intentShow);
                 finish();
 
+            }
+        });
+
+        helpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CustomDialogClass cdd=new CustomDialogClass(SearchActivity.this);
+                cdd.show();
+                cdd.setInfo("• Press Search with no filters to display all flights \n\n• Set any filters to get specific flights ");
             }
         });
 
@@ -194,5 +207,7 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
     public void onBackPressed() {   // resets  Search activity and every field is cleared for a new search
         startActivity(new Intent(this, MainActivity.class));
     }
+
+
 
 }

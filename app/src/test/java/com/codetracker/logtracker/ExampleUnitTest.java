@@ -1,4 +1,4 @@
-package com.example.logtracker;
+package com.codetracker.logtracker;
 
 import org.junit.Test;
 

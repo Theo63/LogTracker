@@ -1,4 +1,4 @@
-package com.example.logtracker.basicActivities;
+package com.codetracker.logtracker.basicActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,13 +10,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.example.logtracker.DatePickerFragment;
-import com.example.logtracker.LogtrackerDBHandler;
-import com.example.logtracker.R;
-import com.example.logtracker.TimePickerFragment;
-import com.example.logtracker.flightLog;
+import com.codetracker.logtracker.DatePickerFragment;
+import com.codetracker.logtracker.LogtrackerDBHandler;
+import com.codetracker.logtracker.R;
+import com.codetracker.logtracker.TimePickerFragment;
+import com.codetracker.logtracker.flightLog;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;

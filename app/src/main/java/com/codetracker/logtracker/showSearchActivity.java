@@ -1,4 +1,4 @@
-package com.example.logtracker;
+package com.codetracker.logtracker;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,10 +11,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.logtracker.basicActivities.PreferencesActivity;
-import com.example.logtracker.basicActivities.SearchActivity;
+import com.codetracker.logtracker.basicActivities.SearchActivity;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;

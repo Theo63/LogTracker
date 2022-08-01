@@ -1,4 +1,4 @@
-package com.example.logtracker;
+package com.codetracker.logtracker;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -8,7 +8,7 @@ import android.widget.TimePicker;
 
 import androidx.fragment.app.DialogFragment;
 
-import com.example.logtracker.basicActivities.RegistrationActivity;
+import com.codetracker.logtracker.basicActivities.RegistrationActivity;
 
 import java.util.ArrayList;
 

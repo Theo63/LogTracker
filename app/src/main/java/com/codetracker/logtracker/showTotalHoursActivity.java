@@ -1,4 +1,4 @@
-package com.example.logtracker;
+package com.codetracker.logtracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,7 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import com.example.logtracker.basicActivities.PreferencesActivity;
+import com.codetracker.logtracker.basicActivities.PreferencesActivity;
 
 import java.util.ArrayList;
 

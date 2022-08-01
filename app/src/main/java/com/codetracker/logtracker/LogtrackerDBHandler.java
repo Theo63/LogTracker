@@ -1,13 +1,19 @@
-package com.example.logtracker;
+package com.codetracker.logtracker;
 
+import android.Manifest;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
 import android.os.Environment;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -18,6 +24,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
@@ -77,6 +84,11 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
                 COLUMN_FLIGHTDURATION + " TEXT" +
                 ")";
         db.execSQL(CREATE_HOURS_TABLE);
+
+       //storagePermissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
+
+
+
     }
 
     //Αναβάθμιση ΒΔ: εδώ τη διαγραφώ και τη ξαναδημιουργώ ίδια
@@ -372,7 +384,7 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
             File sd = Environment.getExternalStorageDirectory();
             File data = Environment.getDataDirectory();
 
-            String currentDBPath = "//data//com.example.logtracker//databases//flightsDB.db";
+            String currentDBPath = "//data//com.codetracker.logtracker//databases//flightsDB.db";
             String backupDBPath = "flightsDB.db";
             File currentDB = new File(data, currentDBPath);
             File backupDB = new File(sd, backupDBPath);
@@ -386,36 +398,10 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
 
         }
         catch (Exception e) {
+            System.out.println(e);
             return false;
         }
     }
-
-    public boolean importDatabase(){
-        try
-        {
-            File sd = Environment.getExternalStorageDirectory();
-            File data = Environment.getDataDirectory();
-
-            String currentDBPath = "//data//" + "com.example.logtracker" + "//databases//" + "flightsDB.db";
-            String backupDBPath = "flightsDB.db";
-            File backupDB = new File(data, currentDBPath);
-            File currentDB = new File(sd, backupDBPath);
-
-            FileChannel src = new FileInputStream(currentDB).getChannel();
-            FileChannel dst = new FileOutputStream(backupDB).getChannel();
-            dst.transferFrom(src, 0, src.size());
-            src.close();
-            dst.close();
-            return true;
-
-        }
-        catch (Exception e) {
-            return false;
-        }
-    }
-
-
-
 
 
 

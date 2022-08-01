@@ -1,4 +1,4 @@
-package com.example.logtracker;
+package com.codetracker.logtracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.example.logtracker.basicActivities.MainActivity;
+import com.codetracker.logtracker.basicActivities.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

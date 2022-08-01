@@ -1,4 +1,4 @@
-package com.example.logtracker.basicActivities;
+package com.codetracker.logtracker.basicActivities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -13,7 +13,7 @@ import android.os.Environment;
 import android.provider.Settings;
 import android.view.View;
 
-import com.example.logtracker.R;
+import com.codetracker.logtracker.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,13 +27,14 @@ public class MainActivity extends AppCompatActivity {
                         , Manifest.permission.READ_EXTERNAL_STORAGE}
                         , PackageManager.PERMISSION_GRANTED);
 
-        if (Build.VERSION.SDK_INT >= 30){
-            if (!Environment.isExternalStorageManager()){
-                Intent getpermission = new Intent();
-                getpermission.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
-                startActivity(getpermission);
-            }
-        }
+//        if (Build.VERSION.SDK_INT >= 30){
+//            if (!Environment.isExternalStorageManager()){
+//                Intent getpermission = new Intent();
+//                getpermission.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+//                startActivity(getpermission);
+//            }
+//        }
+
 
     }
 
@@ -54,4 +55,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intentSearch = new Intent(MainActivity.this, SearchActivity.class);
         startActivity(intentSearch);
     }
+
+    // Back button fix to minimise app (Preferences activity has a back button press
+    @Override
+    public void onBackPressed() {
+        Intent startMain = new Intent(Intent.ACTION_MAIN);
+        startMain.addCategory(Intent.CATEGORY_HOME);
+        startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(startMain);
+    }
+
 }

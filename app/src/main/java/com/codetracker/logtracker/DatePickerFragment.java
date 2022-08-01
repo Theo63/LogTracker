@@ -1,4 +1,4 @@
-package com.example.logtracker;
+package com.codetracker.logtracker;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -7,8 +7,8 @@ import android.widget.DatePicker;
 
 import androidx.fragment.app.DialogFragment;
 
-import com.example.logtracker.basicActivities.RegistrationActivity;
-import com.example.logtracker.basicActivities.SearchActivity;
+import com.codetracker.logtracker.basicActivities.RegistrationActivity;
+import com.codetracker.logtracker.basicActivities.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.Calendar;

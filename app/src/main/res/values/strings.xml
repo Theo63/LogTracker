@@ -3,24 +3,6 @@
     <string name="todo">TODO</string>
     <string name="pickdate">pickDate</string>
 
-    <string name="Aircraft1">com.example.logtracker.Aircraft1Pref</string>
-    <string name="Aircraft2">com.example.logtracker.Aircraft2Pref</string>
-    <string name="Aircraft3">com.example.logtracker.Aircraft3Pref</string>
-    <string name="Aircraft4">com.example.logtracker.Aircraft4Pref</string>
-    <string name="pos1">com.example.logtracker.pos1Pref</string>
-    <string name="pos2">com.example.logtracker.pos2Pref</string>
-    <string name="pos3">com.example.logtracker.pos3Pref</string>
-    <string name="pos4">com.example.logtracker.pos4Pref</string>
-    <string name="startingHours1">com.example.logtracker.StHr1Pref</string>
-    <string name="startingHours2">com.example.logtracker.StHr2Pref</string>
-    <string name="startingHours3">com.example.logtracker.StHr3Pref</string>
-    <string name="startingHours4">com.example.logtracker.StHr4Pref</string>
-
-
-    //Preferences acrivity
-    <!--    <string name="Name_hint">Name</string>-->
-    <!--    <string name="mail_hint">e-mail</string>-->
-    <!--    <string name="starting_hours">Starting Hours</string>-->
 
     <string-array name="Aircraft_types">
         <item>choose</item>
@@ -30,9 +12,11 @@
         <item>AW109</item>
         <item>AW169</item>
         <item>AW189</item>
-        <item>AS 350 / EC130</item>
+        <item>AS 350</item>
+        <item>EC130</item>
         <item>SA 330</item>
-        <item>AS 332 / EC 225</item>
+        <item>AS 332</item>
+        <item>EC 225</item>
         <item>AS355</item>
         <item>Bell 47</item>
         <item>Bell 206</item>
@@ -66,22 +50,30 @@
         <item>Mi 8</item>
         <item>MD500N-600N</item>
         <item>MD900-902</item>
-        <item>R 22 - 44 - 66</item>
-        <item>SK-61</item>
-        <item>SA341/342</item>
-        <item>SA318/SE313</item>
-        <item>SA316/319/315</item>
+        <item>R 22</item>
+        <item>R 44</item>
+        <item>R 66</item>
+        <item>SA341</item>
+        <item>SA342</item>
+        <item>SA318</item>
+        <item>SE313</item>
+        <item>SA316</item>
+        <item>SA319</item>
+        <item>SA315</item>
         <item>SA360</item>
         <item>SO 1221</item>
-        <item>S365 / EC155</item>
+        <item>S365</item>
+        <item>EC155</item>
         <item>SA365 C</item>
         <item>S 64 F</item>
         <item>SC 330</item>
         <item>SW-4</item>
         <item>W-3 SOKOL</item>
-        <item>S 55 - 58</item>
+        <item>S 55</item>
+        <item>S 58</item>
         <item>SK 76</item>
-        <item>SK 61-92</item>
+        <item>SK 61</item>
+        <item>SK 92</item>
         <item>SV 4</item>
         <item>WHS 55</item>
     </string-array>

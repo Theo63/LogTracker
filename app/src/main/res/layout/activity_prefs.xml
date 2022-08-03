@@ -160,24 +160,10 @@
             android:id="@+id/Reset_database_Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginTop="32dp"
             android:text="Reset LogBook"
             android:textColor="@android:color/holo_red_dark"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DB_exportToExcelButton" />
-
-        <Button
-            android:id="@+id/DB_exportToExcelButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Export flights to excel"
-            android:textColor="#B3E5FC"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/helpButtonDB" />
 

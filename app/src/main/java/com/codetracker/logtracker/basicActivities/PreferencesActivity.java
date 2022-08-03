@@ -4,28 +4,19 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
@@ -41,15 +32,12 @@ import com.codetracker.logtracker.R;
 import com.codetracker.logtracker.showTotalHoursActivity;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -204,18 +192,23 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
             }
         });
 
-        ExportDB = (Button) findViewById(R.id.DB_exportToExcelButton);
-        ExportDB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                String path = flightsDBprefs.writeFlightsToExcel();
-                Snackbar exportExcelSnack = Snackbar.make(findViewById(R.id.preferences_layout),
-                        "FLights.xls is in your internal storage home directory", 1500);
-                exportExcelSnack.show();
-
-            }
-        });
+//        ExportDB = (Button) findViewById(R.id.DB_exportToExcelButton);
+//        ExportDB.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+////                String path = flightsDBprefs.writeFlightsToExcel();
+////                Snackbar exportExcelSnack = Snackbar.make(findViewById(R.id.preferences_layout),
+////                        "FLights.xls is in your internal storage home directory", 1500);
+////                exportExcelSnack.show();
+//                try {
+//                    exportExcel();
+//                } catch (FileNotFoundException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        });
 
         BackupDB = (Button) findViewById(R.id.DB_exportButton);
         BackupDB.setOnClickListener(new View.OnClickListener() {
@@ -252,7 +245,7 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                openSomeActivityForResult();
+                                openDbImportActivityForResult();
 
                             }
                         });
@@ -368,7 +361,7 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
 
 
         // Import flights from any directory user chooses
-        ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
+        ActivityResultLauncher<Intent> dbImportActivityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
@@ -424,13 +417,63 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
                     }
                 });
 
-        public void openSomeActivityForResult() {
+        public void openDbImportActivityForResult() {
             Intent chooseFile;
             chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
             chooseFile.addCategory(Intent.CATEGORY_OPENABLE);
             chooseFile.setType("*/*");
-            someActivityResultLauncher.launch(chooseFile);
+            dbImportActivityResultLauncher.launch(chooseFile);
         }
+
+
+
+
+//    //Backup flights to any directory user chooses
+//    private void exportExcel() throws FileNotFoundException {
+//        copyExcelPrivateStorage();
+//        Intent intent = new Intent(Intent.ACTION_SEND);
+//        intent.setType("application/xls");
+//        Uri uri = new FileProviderExcel().getDatabaseURI(this);
+//        intent.putExtra(Intent.EXTRA_STREAM, uri);
+//        intent.setFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+//        startActivity(Intent.createChooser(intent, "Backup via:"));
+//    }
+//
+//
+//    private void copyExcelPrivateStorage() {
+//        // From https://stackoverflow.com/a/2661882
+//        try {
+//
+//            File sd = getFilesDir();
+//            if (sd.canWrite()) {
+//                String currentDBPath = "//data//com.codetracker.logtracker//databases//flightsDB.db";
+//                String backupDBPath = "flightsDB.db";
+//                File backupDB = new File(sd, backupDBPath);
+//
+//                FileChannel src = flightsDBprefs.writeFlightsToExcel();
+//                FileChannel dst = new FileOutputStream(backupDB).getChannel();
+//                dst.transferFrom(src, 0, src.size());
+//                System.out.println("Dst size: "+dst.size());
+//                src.close();
+//                dst.close();
+//
+//            }
+//        } catch (Exception e) {
+//            Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show();
+//        }
+//    }
+//
+//    public class FileProviderExcel extends androidx.core.content.FileProvider {
+//        public Uri getDatabaseURI(Context c) {
+//            File exportFile = new File(c.getFilesDir(), "flights.xls");
+//            Uri uri = getUriForFile(c, "com.codetracker.logtracker.fileprovider", exportFile);
+//            c.grantUriPermission("*", uri, Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//            return uri;
+//        }
+//    }
+
+
+
 
 
 

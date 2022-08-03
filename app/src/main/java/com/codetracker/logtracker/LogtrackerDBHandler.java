@@ -48,7 +48,7 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_DUTYONBOARD = "dutyOnBoard";
 
     public static final String TABLE_HOURS= "hours";
-    public File filePath = new File(Environment.getExternalStorageDirectory().toString()+"/"+"flights.xls");
+    public File filePath = new File(Environment.getDownloadCacheDirectory().toString()+"/"+"flights.xls");
 
 
 
@@ -176,51 +176,58 @@ public class LogtrackerDBHandler extends SQLiteOpenHelper {
     }
 
 
-
-    public String writeFlightsToExcel() {
-
-        String query = "SELECT * FROM " + TABLE_FLIGHTS + ";";
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
-        HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
-        HSSFSheet hssfSheet = hssfWorkbook.createSheet();
-        HSSFCell hssfCell = null;
-        HSSFRow hssfRow = null;
-
-        //initial
-        firstRow(hssfCell,hssfRow,hssfSheet);
-
-        if (cursor.moveToFirst()) {
-            int i = 1;
-            do {
-                hssfRow = hssfSheet.createRow(i);
-
-                for (int j = 0; j < 12; j++) {
-                    hssfCell = hssfRow.createCell(j);
-                    hssfCell.setCellValue(cursor.getString(j));
-                }
-                i++;
-            } while (cursor.moveToNext());
-
-        }
-        try {
-            System.out.println("this is"+!filePath.exists());
-            if (!filePath.exists()) {
-                filePath.createNewFile();
-            }
-            FileOutputStream fileOutputStream = new FileOutputStream(filePath);
-            hssfWorkbook.write(fileOutputStream);
-            if (fileOutputStream != null) {
-                fileOutputStream.flush();
-                fileOutputStream.close();
-            }
-        } catch (Exception e) {
-            return e.getMessage();
-        }
-        db.close();//close database
-        return filePath.getAbsolutePath();
-
-    }
+//
+//    public FileChannel writeFlightsToExcel() {
+//
+//        String query = "SELECT * FROM " + TABLE_FLIGHTS + ";";
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        Cursor cursor = db.rawQuery(query, null);
+//        HSSFWorkbook hssfWorkbook = new HSSFWorkbook();
+//        HSSFSheet hssfSheet = hssfWorkbook.createSheet();
+//        HSSFCell hssfCell = null;
+//        HSSFRow hssfRow = null;
+//
+//        //initial
+//        firstRow(hssfCell,hssfRow,hssfSheet);
+//
+//        if (cursor.moveToFirst()) {
+//            int i = 1;
+//            do {
+//                hssfRow = hssfSheet.createRow(i);
+//
+//                for (int j = 0; j < 12; j++) {
+//                    hssfCell = hssfRow.createCell(j);
+//                    hssfCell.setCellValue(cursor.getString(j));
+//                }
+//                i++;
+//            } while (cursor.moveToNext());
+//
+//        }
+//        try {
+//            System.out.println("this is"+!filePath.exists());
+////            if (!filePath.exists()) {
+////                filePath.createNewFile();
+////            }
+//            File excel = new File("flights.xls");
+//            excel.createNewFile();
+//            FileOutputStream fileOutputStream = new FileOutputStream();
+//            hssfWorkbook.write(fileOutputStream);
+////            if (fileOutputStream != null) {
+////                fileOutputStream.flush();
+////                fileOutputStream.close();
+////            }
+//            System.out.println(fileOutputStream.getChannel().size());
+//            FileChannel src =  fileOutputStream.getChannel();
+//
+//            return src;
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
+//        db.close();//close database
+//        return null;
+//
+//
+//    }
 
 
 

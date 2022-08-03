@@ -23,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getWindow().setNavigationBarColor(Color.parseColor("#557DBC"));
 
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE
-                        , Manifest.permission.READ_EXTERNAL_STORAGE}
-                        , PackageManager.PERMISSION_GRANTED);
+//        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE
+//                        , Manifest.permission.READ_EXTERNAL_STORAGE}
+//                        , PackageManager.PERMISSION_GRANTED);
 
 //        if (Build.VERSION.SDK_INT >= 30){
 //            if (!Environment.isExternalStorageManager()){

@@ -81,6 +81,17 @@
     <string-array name="Flight_types">
         <item>choose</item>
         <item>General purpose</item>
+        <item>News gathering</item>
+        <item>Crop spraying</item>
+        <item>Fire fighting</item>
+        <item>Aerial work</item>
+        <item>Law enforcement</item>
+        <item>Passenger transport</item>
+        <item>Build-Up</item>
+        <item>Type Rating</item>
+        <item>Revalidation</item>
+        <item>Renewal</item>
+        <item>Emergency medical services</item>
         <item>IFR flight training</item>
         <item>VFR flight training</item>
         <item>Maintenance flight</item>
@@ -110,6 +121,7 @@
     <string-array name="Duty_on_Board">
         <item>choose</item>
         <item>Instructor Pilot</item>
+        <item>Student Pilot</item>
         <item>Maintenance Pilot</item>
         <item>Test Pilot</item>
         <item>1st Pilot</item>

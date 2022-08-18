@@ -59,14 +59,14 @@
                 android:id="@+id/aircraft_type_text2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:text="Aircraft Type"
                 android:textColor="#04080F"
                 android:textSize="16sp"
                 app:layout_constraintDimensionRatio="6"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline5" />
+                app:layout_constraintTop_toBottomOf="@+id/timeofflight_text8" />
 
             <TextView
                 android:id="@+id/landings_text6"
@@ -87,7 +87,7 @@
                 android:id="@+id/dutyonboard_text11"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="19dp"
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 android:text="Duty on board"
@@ -96,7 +96,7 @@
                 app:layout_constraintDimensionRatio="6"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline10" />
+                app:layout_constraintTop_toBottomOf="@+id/flightrunes_text10" />
 
             <TextView
                 android:id="@+id/typeofflight_text7"
@@ -111,7 +111,7 @@
                 app:layout_constraintDimensionRatio="6"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline6" />
+                app:layout_constraintTop_toBottomOf="@+id/landings_text6" />
 
             <TextView
                 android:id="@+id/destination_text5"
@@ -132,7 +132,7 @@
                 android:id="@+id/lightconditions_text9"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="18dp"
                 android:paddingTop="0dp"
                 android:paddingBottom="0dp"
                 android:text="Light Conditions"
@@ -141,7 +141,7 @@
                 app:layout_constraintDimensionRatio="6"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline8" />
+                app:layout_constraintTop_toBottomOf="@+id/typeofflight_text7" />
 
             <TextView
                 android:id="@+id/arrival_text4"
@@ -177,14 +177,14 @@
                 android:id="@+id/flightrunes_text10"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="18dp"
                 android:text="Flight Rules"
                 android:textColor="#04080F"
                 android:textSize="16sp"
                 app:layout_constraintDimensionRatio="6"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline9" />
+                app:layout_constraintTop_toBottomOf="@+id/lightconditions_text9" />
 
 
             <TextView
@@ -198,7 +198,7 @@
                 app:layout_constraintDimensionRatio="6"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline11" />
+                app:layout_constraintTop_toBottomOf="@+id/aircraft_type_text2" />
 
             <Button
                 android:id="@+id/datePicker"
@@ -229,14 +229,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.538"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toTopOf="@+id/guideline5"
+                app:layout_constraintTop_toBottomOf="@+id/timePicker"
                 app:layout_constraintWidth_min="128dp" />
 
             <EditText
                 android:id="@+id/aircraft_id_input"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/border"
                 android:ems="10"
                 android:inputType="textPersonName|textCapCharacters"
@@ -249,7 +249,7 @@
                 app:layout_constraintDimensionRatio="7"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toTopOf="@+id/guideline11" />
+                app:layout_constraintTop_toBottomOf="@+id/aircraft_type_spinner" />
 
             <EditText
                 android:id="@+id/landings_input"
@@ -300,13 +300,13 @@
                 app:layout_constraintDimensionRatio="8"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toTopOf="@+id/guideline6" />
+                app:layout_constraintTop_toBottomOf="@+id/landings_input" />
 
             <Button
                 android:id="@+id/registerButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginBottom="16dp"
                 android:text="Register"
                 android:textColor="#B3E5FC"
@@ -316,7 +316,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.521"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline7" />
+                app:layout_constraintTop_toBottomOf="@+id/dutyonboard_text11" />
 
             <Spinner
                 android:id="@+id/flight_rules_spinner"
@@ -328,7 +328,7 @@
                 app:layout_constraintDimensionRatio="8"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toTopOf="@+id/guideline9"
+                app:layout_constraintTop_toBottomOf="@+id/light_conditions_spinner"
                 app:layout_constraintWidth_min="128dp" />
 
             <Spinner
@@ -341,7 +341,7 @@
                 app:layout_constraintDimensionRatio="8"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toTopOf="@+id/guideline10"
+                app:layout_constraintTop_toBottomOf="@+id/flight_rules_spinner"
                 app:layout_constraintWidth_min="128dp" />
 
             <Spinner
@@ -354,7 +354,7 @@
                 app:layout_constraintDimensionRatio="8"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toTopOf="@+id/guideline8"
+                app:layout_constraintTop_toBottomOf="@+id/type_of_flight_spinner"
                 app:layout_constraintWidth_min="128dp" />
 
             <EditText
@@ -401,53 +401,11 @@
                 app:layout_constraintGuide_percent="0.5" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="215dp" />
-
-            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="406dp" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="575dp" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="446dp" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="486dp" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="526dp" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_begin="255dp" />
+                app:layout_constraintGuide_begin="538dp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

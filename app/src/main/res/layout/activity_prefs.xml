@@ -46,7 +46,7 @@
             android:id="@+id/helpButtonStarting"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/round_button"
             android:gravity="center_vertical|center_horizontal"
             android:paddingLeft="0dp"
@@ -65,7 +65,7 @@
             android:id="@+id/displayTotalHours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="Display\n Total Hours"
             android:textColor="#B3E5FC"
             app:flow_horizontalAlign="center"
@@ -90,9 +90,8 @@
             android:id="@+id/startingHours"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/border"
             android:ems="10"
             android:inputType="number"
@@ -105,18 +104,20 @@
             app:layout_constraintDimensionRatio="4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/aircraft_pref_spinner1"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            app:layout_constraintStart_toStartOf="@+id/guideline5"
+            app:layout_constraintTop_toTopOf="@+id/aircraft_pref_spinner1" />
 
         <Spinner
             android:id="@+id/aircraft_pref_spinner1"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
             android:spinnerMode="dropdown"
-            android:textAlignment="textStart"
+            android:textAlignment="viewStart"
             app:layout_constraintDimensionRatio="8"
+            app:layout_constraintEnd_toStartOf="@+id/guideline5"
             app:layout_constraintStart_toStartOf="@+id/guideline4"
             app:layout_constraintTop_toBottomOf="@+id/textView6"
             app:layout_constraintWidth_min="128dp" />
@@ -193,15 +194,14 @@
             android:id="@+id/startingHoursHeli_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:text="Type / Hours"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            app:layout_constraintTop_toTopOf="@+id/aircraft_pref_spinner1" />
 
         <TextView
             android:id="@+id/textView6"
@@ -220,7 +220,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="109dp" />
+            app:layout_constraintGuide_percent="0.26" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.75" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -15,7 +15,7 @@
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:textAlignment="gravity"
-        android:textColor="#B3E5FC"
+        android:textColor="@color/text_light_blue"
         android:textSize="20sp"
         android:textStyle="normal" />
 
@@ -28,7 +28,7 @@
         android:layout_marginLeft="2dp"
         android:clickable="true"
         android:text="Dismiss"
-        android:textColor="#B3E5FC"
+        android:textColor="@color/text_light_blue"
         android:textStyle="normal" />
 
 </LinearLayout>

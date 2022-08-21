@@ -32,7 +32,7 @@ public class showSearchActivity extends AppCompatActivity implements flightRVAda
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setNavigationBarColor(Color.parseColor("#557DBC"));
+//        getWindow().setNavigationBarColor(Color.parseColor("#557DBC"));
         setContentView(R.layout.activity_show_search);
         //gets an Arraylist of an Arraylist to display
         flightResults = new ArrayList<>();

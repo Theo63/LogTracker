@@ -13,15 +13,15 @@
         <entry key="app/src/main/res/drawable/round_button.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_custom_dialog_class.xml" value="0.55" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_prefs.xml" value="0.67" />
-        <entry key="app/src/main/res/layout/activity_registration.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/activity_prefs.xml" value="0.5242047026279392" />
+        <entry key="app/src/main/res/layout/activity_registration.xml" value="0.45" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.35" />
         <entry key="app/src/main/res/layout/activity_show_search.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_show_total_hours.xml" value="0.3496376811594203" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.44072948328267475" />
         <entry key="app/src/main/res/layout/flight_row_layout.xml" value="0.5" />
         <entry key="app/src/main/res/layout/hoursDisplay_row_layout.xml" value="0.5932971014492754" />
-        <entry key="app/src/main/res/layout/hours_row_layout.xml" value="0.6911231884057971" />
+        <entry key="app/src/main/res/layout/hours_row_layout.xml" value="0.5198902606310014" />
         <entry key="app/src/main/res/layout/info_message_layout.xml" value="0.15628166160081053" />
         <entry key="app/src/main/res/layout/spinner_item.xml" value="0.7413949275362319" />
         <entry key="app/src/main/res/xml/backup_rules.xml" value="0.20425724637681159" />

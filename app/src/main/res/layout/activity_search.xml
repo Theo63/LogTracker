@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#557DBC">
+    android:background="@color/background_blue">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -87,7 +87,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Flight Search"
                 android:textAlignment="center"
-                android:textColor="#B3E5FC"
+                android:textColor="@color/text_light_blue"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="64dp"
                 android:text="Date"
-                android:textColor="#04080F"
+                android:textColor="@color/text_light_blue"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="Aircraft Type"
-                android:textColor="@color/black"
+                android:textColor="@color/text_light_blue"
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dateFromButton" />
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Aircraft ID"
-                android:textColor="@color/black"
+                android:textColor="@color/text_light_blue"
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/AircraftTypeText" />
@@ -133,7 +133,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="Location"
-                android:textColor="@color/black"
+                android:textColor="@color/text_light_blue"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/AircraftIDText" />
@@ -144,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="Type of flight"
-                android:textColor="@color/black"
+                android:textColor="@color/text_light_blue"
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/locationFromSearch" />
@@ -155,7 +156,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Duty on Board"
-                android:textColor="@color/black"
+                android:textColor="@color/text_light_blue"
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/typeofFlightText" />
@@ -169,7 +170,7 @@
                 android:padding="3dp"
                 android:text="   /    /"
                 android:textAlignment="center"
-                android:textColor="#B3E5FC"
+                android:textColor="@color/text_light_blue"
                 app:layout_constraintDimensionRatio="3"
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
                 app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +185,7 @@
                 android:padding="3dp"
                 android:text="   /    /"
                 android:textAlignment="center"
-                android:textColor="#B3E5FC"
+                android:textColor="@color/text_light_blue"
                 app:layout_constraintDimensionRatio="3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -197,6 +198,8 @@
                 android:layout_marginTop="16dp"
                 android:ems="10"
                 android:hint="from"
+                android:textColorHint="@color/text_light_blue"
+                android:textColor="@color/text_light_blue"
                 android:inputType="textPersonName"
                 android:textSize="14sp"
                 app:layout_constraintDimensionRatio="3"
@@ -212,6 +215,8 @@
                 android:ems="10"
                 android:hint="to"
                 android:inputType="textPersonName"
+                android:textColorHint="@color/text_light_blue"
+                android:textColor="@color/text_light_blue"
                 android:textSize="14sp"
                 app:layout_constraintDimensionRatio="3"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -225,7 +230,7 @@
                 android:layout_marginTop="64dp"
                 android:layout_marginBottom="32dp"
                 android:text="Search"
-                android:textColor="#B3E5FC"
+                android:textColor="@color/text_light_blue"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

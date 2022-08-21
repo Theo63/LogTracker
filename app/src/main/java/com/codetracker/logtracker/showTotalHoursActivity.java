@@ -23,7 +23,7 @@ public class showTotalHoursActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setNavigationBarColor(Color.parseColor("#557DBC"));
+//        getWindow().setNavigationBarColor(Color.parseColor("#557DBC"));
         setContentView(R.layout.activity_show_total_hours);
         //gets an Arraylist of an Arraylist to display
         totalHourResults = new ArrayList<>();

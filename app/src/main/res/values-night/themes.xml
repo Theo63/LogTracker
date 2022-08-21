@@ -2,17 +2,18 @@
     <!-- Base application theme. -->
     <style name="Theme.LogTracker" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#557DBC</item>
+        <item name="colorPrimary">#0066CC</item>
         <item name="colorPrimaryVariant">#B3E5FC</item>
         <item name="colorOnPrimary">#557DBC</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">#0066CC</item>
+        <item name="colorSecondaryVariant">#B3E5FC</item>
+        <item name="colorOnSecondary">#557DBC</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/background_blue</item>
+        <item name="android:navigationBarColor" tools:targetApi="l">@color/background_blue</item>
         <!--        added -->
-        <item name="android:actionBarItemBackground">?attr/colorPrimary</item>
+        <item name="android:actionBarItemBackground">@color/background_blue</item>
         <!--        added -->
         <!-- Customize your theme here. -->
     </style>

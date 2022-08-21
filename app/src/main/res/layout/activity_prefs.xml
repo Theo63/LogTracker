@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:background="#557DBC">
+    android:background="@color/background_blue">
 
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Display\n Total Hours"
-            android:textColor="#B3E5FC"
+            android:textColor="@color/text_light_blue"
             app:flow_horizontalAlign="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Reset"
-            android:textColor="#B3E5FC"
+            android:textColor="@color/text_light_blue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/displayTotalHours"
             app:layout_constraintTop_toBottomOf="@+id/helpButtonStarting"
@@ -151,7 +151,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Save"
-            android:textColor="#B3E5FC"
+            android:textColor="@color/text_light_blue"
             app:layout_constraintEnd_toStartOf="@+id/displayTotalHours"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/helpButtonStarting"
@@ -175,7 +175,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
             android:text="Backup flights"
-            android:textColor="#B3E5FC"
+            android:textColor="@color/text_light_blue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Save_prefs_Button" />
 
@@ -186,7 +186,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
             android:text="Import flights"
-            android:textColor="#B3E5FC"
+            android:textColor="@color/text_light_blue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/resetStrartingHours" />
 
@@ -197,7 +197,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:text="Type / Hours"
-            android:textColor="@color/black"
+            android:textColor="@color/text_light_blue"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="parent"
@@ -209,7 +209,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="Starting Hours Registration"
-            android:textColor="#B3E5FC"
+            android:textColor="@color/text_light_blue"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

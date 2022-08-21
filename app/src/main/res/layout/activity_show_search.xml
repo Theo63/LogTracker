@@ -5,7 +5,7 @@
     android:id="@+id/showFlightsLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#557DBC"
+    android:background="@color/background_blue"
     android:orientation="vertical"
     tools:context=".showSearchActivity">
 
@@ -17,7 +17,7 @@
         android:paddingBottom="8dp"
         android:text="Flight Results"
         android:textAlignment="center"
-        android:textColor="#B3E5FC"
+        android:textColor="@color/text_light_blue"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -28,7 +28,7 @@
         android:paddingTop="2dp"
         android:paddingBottom="4dp"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="@color/text_light_blue"
         android:textSize="16sp"
         android:textStyle="bold" />
 

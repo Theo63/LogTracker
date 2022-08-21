@@ -33,7 +33,7 @@ Spinner type_of_aircraftSpinner,type_of_flightSpinner,light_condSpinner,flight_r
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-        getWindow().setNavigationBarColor(Color.parseColor("#557DBC"));
+//        getWindow().setNavigationBarColor(Color.parseColor("#557DBC"));
         flightsDB = new LogtrackerDBHandler(this); //creates db obj
         aircraftid = (EditText) findViewById(R.id.aircraft_id_input);
         landings = (EditText) findViewById(R.id.landings_input);

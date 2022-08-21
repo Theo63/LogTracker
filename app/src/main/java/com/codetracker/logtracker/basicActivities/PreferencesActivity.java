@@ -63,7 +63,7 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prefs);
-        getWindow().setNavigationBarColor(Color.parseColor("#557DBC"));
+//        getWindow().setNavigationBarColor(Color.parseColor("#557DBC"));
         flightsDBprefs = new LogtrackerDBHandler(this); //creates db obj
         sharedpreferences = PreferenceManager.getDefaultSharedPreferences(this);
         hoursArrayList = new ArrayList<>();

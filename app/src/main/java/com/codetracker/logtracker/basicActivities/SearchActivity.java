@@ -39,7 +39,7 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        getWindow().setNavigationBarColor(Color.parseColor("#557DBC"));
+//        getWindow().setNavigationBarColor(Color.parseColor("#557DBC"));
         dateBtn1 = (Button) findViewById(R.id.dateFromButton);
         dateBtn2 = (Button) findViewById(R.id.dateUntilButton);
         SearchBtn = (Button) findViewById(R.id.searchBtn);
@@ -61,13 +61,13 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
 
         ///////// Spiner Section //////
         ArrayAdapter<CharSequence> type_of_aircraftadapterSearch = ArrayAdapter.createFromResource(this,
-                R.array.Aircraft_types, android.R.layout.simple_spinner_item); //Aircraft_types is in res/values/strings.xml
+                R.array.Aircraft_types, R.layout.spinner_item); //Aircraft_types is in res/values/strings.xml
 
         ArrayAdapter<CharSequence> type_of_flightadapterSearch = ArrayAdapter.createFromResource(this,
-                R.array.Flight_types, android.R.layout.simple_spinner_item);
+                R.array.Flight_types, R.layout.spinner_item);
 
         ArrayAdapter<CharSequence> duty_on_boardadapterSearch = ArrayAdapter.createFromResource(this,
-                R.array.Duty_on_Board, android.R.layout.simple_spinner_item);
+                R.array.Duty_on_Board, R.layout.spinner_item);
 
         // Specify the layout to use when the list of choices appears
         type_of_aircraftadapterSearch.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

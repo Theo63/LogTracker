@@ -18,9 +18,9 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         int hour = 0;
         int minute = 0;
-
         // Create a new instance of TimePickerDialog and return it
-        return new TimePickerDialog(getActivity(), this, hour, minute, DateFormat.is24HourFormat(getActivity()));
+        TimePickerDialog newDialog = new TimePickerDialog(getActivity(),this, hour, minute, true);
+        return newDialog;
     }
 
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -29,7 +29,6 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         time.add(1,minute);
         System.out.println("the flight time picked is : "+ hourOfDay+ " : "+minute);
         RegistrationActivity.setTimeButton(time);
-
     }
 
     public ArrayList<Integer> getTime(){return time;}

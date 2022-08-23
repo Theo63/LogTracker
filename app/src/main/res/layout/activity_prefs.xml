@@ -8,229 +8,245 @@
     android:background="@color/background_blue">
 
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/preferences"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:flow_horizontalAlign="center"
-    app:flow_verticalAlign="center">
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/preferences_layout"
+        android:id="@+id/preferences"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:layout_height="wrap_content"
+        app:flow_horizontalAlign="center"
+        app:flow_verticalAlign="center">
 
-        <Button
-            android:id="@+id/helpButtonDB"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/round_button"
-            android:gravity="center_vertical|center_horizontal"
-            android:paddingLeft="0dp"
-            android:paddingTop="0dp"
-            android:paddingRight="0dp"
-            android:paddingBottom="0dp"
-            android:text=" ? "
-            android:textAlignment="center"
-            android:textColor="#EDDD8A"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toStartOf="@+id/DB_importButton"
-            app:layout_constraintStart_toEndOf="@+id/DB_exportButton"
-            app:layout_constraintTop_toBottomOf="@+id/DB_exportButton" />
 
-        <Button
-            android:id="@+id/helpButtonStarting"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/round_button"
-            android:gravity="center_vertical|center_horizontal"
-            android:paddingLeft="0dp"
-            android:paddingTop="0dp"
-            android:paddingRight="0dp"
-            android:paddingBottom="0dp"
-            android:text=" ? "
-            android:textAlignment="center"
-            android:textColor="#EDDD8A"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/aircraft_pref_spinner1" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/preferences_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="-106dp"
+            tools:layout_editor_absoluteY="0dp">
 
-        <Button
-            android:id="@+id/displayTotalHours"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Display\n Total Hours"
-            android:textColor="@color/text_light_blue"
-            app:flow_horizontalAlign="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/helpButtonStarting"
-            app:strokeColor="#EDDD8A" />
+            <Button
+                android:id="@+id/helpButtonDB"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/round_button"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                android:text=" ? "
+                android:textAlignment="center"
+                android:textColor="#EDDD8A"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/DB_importButton"
+                app:layout_constraintStart_toEndOf="@+id/DB_exportButton"
+                app:layout_constraintTop_toBottomOf="@+id/DB_exportButton" />
 
-        <Button
-            android:id="@+id/resetStrartingHours"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Reset"
-            android:textColor="@color/text_light_blue"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/displayTotalHours"
-            app:layout_constraintTop_toBottomOf="@+id/helpButtonStarting"
-            app:strokeColor="#EDDD8A" />
+            <Button
+                android:id="@+id/helpButtonStarting"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/round_button"
+                android:gravity="center_vertical|center_horizontal"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                android:text=" ? "
+                android:textAlignment="center"
+                android:textColor="#EDDD8A"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/aircraft_pref_spinner1" />
 
-        <EditText
-            android:id="@+id/startingHours"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/border"
-            android:ems="10"
-            android:inputType="number"
-            android:paddingTop="0dp"
-            android:paddingBottom="0dp"
-            android:text=""
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:layout_constraintDimensionRatio="4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/guideline5"
-            app:layout_constraintTop_toTopOf="@+id/aircraft_pref_spinner1" />
+            <Button
+                android:id="@+id/displayTotalHours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Display\n Total Hours"
+                android:textColor="@color/text_light_blue"
+                app:flow_horizontalAlign="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/helpButtonStarting"
+                app:strokeColor="#EDDD8A" />
 
-        <Spinner
-            android:id="@+id/aircraft_pref_spinner1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:spinnerMode="dropdown"
-            android:textAlignment="viewStart"
-            app:layout_constraintDimensionRatio="8"
-            app:layout_constraintEnd_toStartOf="@+id/guideline5"
-            app:layout_constraintStart_toStartOf="@+id/guideline4"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"
-            app:layout_constraintWidth_min="128dp" />
+            <Button
+                android:id="@+id/resetStrartingHours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Reset"
+                android:textColor="@color/text_light_blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/displayTotalHours"
+                app:layout_constraintTop_toBottomOf="@+id/helpButtonStarting"
+                app:strokeColor="#EDDD8A" />
 
-        <ImageView
-            android:id="@+id/LogoImage"
-            android:layout_width="250dp"
-            android:layout_height="125dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="32dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logtracker" />
+            <EditText
+                android:id="@+id/startingHours"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:inputType="number"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/guideline5"
+                app:layout_constraintTop_toTopOf="@+id/aircraft_pref_spinner1" />
 
-        <TextView
-            android:id="@+id/Logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LogTracker"
-            android:textAlignment="center"
-            android:textColor="#EDDD8A"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/LogoImage" />
+            <Spinner
+                android:id="@+id/aircraft_pref_spinner1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="8dp"
+                android:spinnerMode="dropdown"
+                android:textAlignment="viewStart"
+                app:layout_constraintDimensionRatio="8"
+                app:layout_constraintEnd_toStartOf="@+id/guideline5"
+                app:layout_constraintStart_toStartOf="@+id/guideline4"
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                app:layout_constraintWidth_min="64dp" />
 
-        <Button
-            android:id="@+id/Save_prefs_Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Save"
-            android:textColor="@color/text_light_blue"
-            app:layout_constraintEnd_toStartOf="@+id/displayTotalHours"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/helpButtonStarting"
-            app:strokeColor="#EDDD8A" />
+            <ImageView
+                android:id="@+id/LogoImage"
+                android:layout_width="250dp"
+                android:layout_height="125dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logtracker" />
 
-        <Button
-            android:id="@+id/Reset_database_Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Reset LogBook"
-            android:textColor="@android:color/holo_red_dark"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/helpButtonDB" />
+            <TextView
+                android:id="@+id/Logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LogTracker"
+                android:textAlignment="center"
+                android:textColor="#EDDD8A"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LogoImage" />
 
-        <Button
-            android:id="@+id/DB_exportButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:text="Backup flights"
-            android:textColor="@color/text_light_blue"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Save_prefs_Button" />
+            <Button
+                android:id="@+id/Save_prefs_Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Save"
+                android:textColor="@color/text_light_blue"
+                app:layout_constraintEnd_toStartOf="@+id/displayTotalHours"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/helpButtonStarting"
+                app:strokeColor="#EDDD8A" />
 
-        <Button
-            android:id="@+id/DB_importButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
-            android:text="Import flights"
-            android:textColor="@color/text_light_blue"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/resetStrartingHours" />
+            <Button
+                android:id="@+id/Reset_database_Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="Reset LogBook"
+                android:textColor="@android:color/holo_red_dark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/helpButtonDB" />
 
-        <TextView
-            android:id="@+id/startingHoursHeli_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="Type / Hours"
-            android:textColor="@color/text_light_blue"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toStartOf="@+id/guideline4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/aircraft_pref_spinner1" />
+            <Button
+                android:id="@+id/DB_exportButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="8dp"
+                android:text="Backup flights"
+                android:textColor="@color/text_light_blue"
+                app:layout_constraintEnd_toStartOf="@+id/guideline8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Save_prefs_Button" />
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Starting Hours Registration"
-            android:textColor="@color/text_light_blue"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Logo" />
+            <Button
+                android:id="@+id/DB_importButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="8dp"
+                android:text="Import flights"
+                android:textColor="@color/text_light_blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline8"
+                app:layout_constraintTop_toBottomOf="@+id/resetStrartingHours" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.26" />
+            <TextView
+                android:id="@+id/startingHoursHeli_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="Type / Hours"
+                android:textColor="@color/text_light_blue"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/aircraft_pref_spinner1" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.75" />
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Starting Hours Registration"
+                android:textColor="@color/text_light_blue"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Logo" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.26" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.75" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
